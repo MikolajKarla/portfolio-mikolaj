@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Manrope, Merriweather } from "next/font/google";
 import "./globals.css";
+import Header from "./Components/Header";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const merriweather = Merriweather({
+  variable: "--font-merriweather",
   subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -24,10 +27,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <head>
+        <title>Mikołaj Karla - Portfolio</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
+      <body className={`${manrope.variable} ${merriweather.variable} antialiased bg-white`}>
+        <header className="fixed left-1/2 top-2 -translate-x-1/2 z-50 flex justify-center px-2 sm:px-4 ">
+          <Header />
+        </header>
+        <main className="pt-16 px-2 sm:px-8 max-w-screen-lg mx-auto w-full">
+          {children}
+        </main>
       </body>
     </html>
   );
