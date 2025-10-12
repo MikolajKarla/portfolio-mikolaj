@@ -58,30 +58,30 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email",
-      value: "hello@mikolajkarla.dev",
-      description: "Odpowiem w ciągu 24 godzin",
-      action: "mailto:hello@mikolajkarla.dev"
+      value: "mikolajkarla@gmail.com",
+      description: "Odpowiem najszybciej jak to możliwe",
+      action: "mailto:mikolajkarla@gmail.com"
     },
     {
       icon: Phone,
       title: "Telefon",
-      value: "+48 123 456 789",
-      description: "Pon-Pt, 9:00-17:00",
-      action: "tel:+48123456789"
+      value: "+48 731 866 536",
+      description: "Dostępny w godzinach szkolnych",
+      action: "tel:+48731866536"
     },
     {
       icon: MapPin,
       title: "Lokalizacja",
-      value: "Warszawa, Polska",
-      description: "Pracuję zdalnie i lokalnie",
+      value: "Bielsko-Biała, Koszyki 4",
+      description: "43-300 Bielsko-Biała",
       action: null
     },
     {
       icon: Calendar,
-      title: "Spotkanie",
-      value: "Umów konsultację",
-      description: "Bezpłatna 30-min rozmowa",
-      action: "https://calendly.com/mikolajkarla"
+      title: "GitHub",
+      value: "Zobacz moje projekty",
+      description: "Portfolio projektów na GitHub",
+      action: "https://github.com/MikolajKarla"
     }
   ]
 
@@ -89,20 +89,20 @@ export default function Contact() {
     {
       icon: Github,
       name: "GitHub",
-      url: "https://github.com/mikolajkarla",
-      username: "@mikolajkarla"
+      url: "https://github.com/MikolajKarla",
+      username: "@MikolajKarla"
     },
     {
-      icon: Linkedin,
-      name: "LinkedIn",
-      url: "https://linkedin.com/in/mikolajkarla",
-      username: "Mikołaj Karla"
+      icon: Mail,
+      name: "Email",
+      url: "mailto:mikolajkarla@gmail.com",
+      username: "mikolajkarla@gmail.com"
     },
     {
-      icon: Twitter,
-      name: "Twitter",
-      url: "https://twitter.com/mikolajkarla",
-      username: "@mikolajkarla"
+      icon: Phone,
+      name: "Telefon",
+      url: "tel:+48731866536",
+      username: "+48 731 866 536"
     }
   ]
 
