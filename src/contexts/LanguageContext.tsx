@@ -14,8 +14,8 @@ const translations = {
   pl: {
     // Navigation
     'nav.about': 'O nas',
-    'nav.services': 'Usługi',
-    'nav.portfolio': 'Portfolio',
+    'nav.services': 'Strony Internetowe',
+    'nav.portfolio': 'Case Studies',
     'nav.contact': 'Kontakt',
     
     // Hero Section
@@ -23,7 +23,7 @@ const translations = {
     'hero.title': 'KFreelance',
     'hero.subtitle': 'Agencja Cyfrowa',
     'hero.description': 'Tworzymy nowoczesne strony internetowe, aplikacje webowe i automatyzujemy procesy biznesowe dla Twojej firmy.',
-    'hero.cta.primary': 'Rozpocznij projekt',
+    'hero.cta.primary': 'Bezpłatna konsultacja',
     'hero.cta.secondary': 'Zobacz nasze usługi',
     
     // About Section
@@ -56,8 +56,8 @@ const translations = {
   en: {
     // Navigation
     'nav.about': 'About',
-    'nav.services': 'Services',
-    'nav.portfolio': 'Portfolio',
+    'nav.services': 'Websites & Services',
+    'nav.portfolio': 'Case Studies',
     'nav.contact': 'Contact',
     
     // Hero Section
@@ -65,7 +65,7 @@ const translations = {
     'hero.title': 'KFreelance',
     'hero.subtitle': 'Digital Agency',
     'hero.description': 'We create modern websites, web applications and automate business processes for your company.',
-    'hero.cta.primary': 'Start a project',
+    'hero.cta.primary': 'Free Consultation',
     'hero.cta.secondary': 'See our services',
     
     // About Section
@@ -100,14 +100,39 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('pl')
+  const [language, setLanguage] = useState<Language>(() => {
+    // Only run on client side
+    if (typeof window === 'undefined') return 'pl'
+    
+    // Check if user has manually set language before (localStorage)
+    const savedLanguage = localStorage.getItem('preferred-language') as Language | null
+    if (savedLanguage && (savedLanguage === 'pl' || savedLanguage === 'en')) {
+      return savedLanguage
+    }
+    
+    // Auto-detect from browser
+    const browserLang = navigator.language.toLowerCase()
+    if (browserLang.startsWith('pl')) {
+      return 'pl'
+    }
+    // Default to English for all other languages
+    return 'en'
+  })
+
+  const handleSetLanguage = (lang: Language) => {
+    setLanguage(lang)
+    // Save user preference to localStorage
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('preferred-language', lang)
+    }
+  }
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations['pl']] || key
   }
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage: handleSetLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   )

@@ -49,10 +49,11 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       
       if (theme === 'dark') {
         root.classList.add('dark')
-        root.style.backgroundColor = '#211010'
+                root.style.backgroundColor = '#FFFFFF'
+
       } else {
         root.classList.remove('dark')
-        root.style.backgroundColor = '#fffaf2'
+        root.style.backgroundColor = '#FFFFFF'
       }
       
       localStorage.setItem('theme', theme)

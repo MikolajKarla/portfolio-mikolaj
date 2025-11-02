@@ -1,181 +1,171 @@
 'use client'
 import { NavigationMenu, NavigationMenuItem, NavigationMenuLink } from '@/components/ui/navigation-menu'
 import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Menu, X, Globe } from 'lucide-react'
-import { ThemeSwitcher } from '@/components/ui/theme-switcher'
-
+import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
 import React, { useState, useEffect } from 'react'
 
 function Header() {
     const [menuOpen, setMenuOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
-    const { language, setLanguage, t } = useLanguage()
+    const [isVisible, setIsVisible] = useState(true)
+    const { t } = useLanguage()
 
     useEffect(() => {
+
+        let lastScrollTop = 0
+        const headerHeight = 80 // Approximate header height
+
         const handleScroll = () => {
-            setScrolled(window.scrollY > 20)
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop
+            
+            // Update blur effect
+            setScrolled(currentScroll > 20)
+            
+            // Hide/show header logic
+            if (currentScroll > lastScrollTop && currentScroll > headerHeight) {
+                // Scrolling down & past header height
+                setIsVisible(false)
+            } else if (currentScroll < lastScrollTop) {
+                // Scrolling up
+                setIsVisible(true)
+            }
+            
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll
         }
+
         window.addEventListener('scroll', handleScroll)
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
-    const navItems = [
-        { name: t('nav.about'), href: '/about' },
-        { name: t('nav.services'), href: '/services' },
-        { name: t('nav.portfolio'), href: '/portfolio' },
-        { name: t('nav.contact'), href: '/contact' },
+    const navLinks = [
+        { href: '/', label: t('nav.about') },
+        { href: '/webpages', label: t('nav.services') },
+        { href: '/case-studies', label: t('nav.portfolio') },
+        { href: '/contact', label: t('nav.contact') }
     ]
 
-    const toggleLanguage = () => {
-        setLanguage(language === 'pl' ? 'en' : 'pl')
-    }
-
-    const getHeaderStyles = () => ({
-        borderColor: 'var(--border)',
-        
-        borderWidth: '1px',
-        boxShadow: scrolled ? '0 20px 25px -5px var(--border)' : '0 10px 15px -3px var(--border)'
-    })
 
     return (
         <NavigationMenu 
             className={`
                 transition-all duration-300 ease-in-out
                 flex flex-col lg:flex-row justify-between items-center 
-                px-4 sm:px-6 lg:px-8 py-3 lg:py-2
-                backdrop-blur-lg rounded-2xl lg:rounded-full shadow-lg
-                xs:min-w-full sm:min-w-3/5
-                bg-background/90
-                ${menuOpen ? 'rounded-2xl' : 'lg:rounded-full'}
+                px-4 sm:px-4 lg:px-2
+                xs:py-4 xs:px-12
+                rounded-2xl lg:rounded-xl shadow-lg
+                xs:min-w-fit sm:min-w-fit
+                ${scrolled ? 'bg-white/80 backdrop-blur-md' : 'bg-white'}
+                ${menuOpen ? 'rounded-2xl' : ''}
+                ${isVisible ? 'translate-y-0  opacity-100' : '-translate-y-full scale-80 opacity-0'}
+                drop-shadow-2xl/40
             `}
-            style={getHeaderStyles()}>
+        >
             {/* Mobile Header */}
             <div className="w-full flex lg:hidden justify-between items-center">
                 <NavigationMenuItem className='list-none'>
                     <NavigationMenuLink 
                         href="/" 
-                        className='font-bold text-lg transition-all duration-300 text-foreground animate-pulse hover:animate-none'
+                        className='font-bold text-lg  text-foreground'
                     >
-                        KFreelance
+                        <Image width={100} height={100} src="/KM-logo.png" alt="KM-Design Logo" className="h-14  w-auto"/>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
                 
                 <Button
-                    variant="ghost"
-                    size="sm"
+                    variant="light"
+                    size="default"
                     onClick={() => setMenuOpen(!menuOpen)}
-                    className="p-2 hover:bg-accent/50 rounded-lg transition-all duration-200"
+                    className="py-3 px-3 hover:bg-accent/50 rounded-lg transition-all duration-200"
                     aria-label="Toggle menu"
                 >
                     {menuOpen ? (
-                        <X className="h-5 w-5 text-foreground" />
+                        <X className="h-8 w-8 text-foreground" />
                     ) : (
-                        <Menu className="h-5 w-5 text-foreground" />
+                        <Menu className="h-8 w-8 text-foreground" />
                     )}
                 </Button>
             </div>
 
             {/* Mobile Menu */}
             <div className={`
-                w-full lg:hidden transition-all duration-300 ease-in-out overflow-hidden
+                w-full lg:hidden transition-all duration-300 ease-in-out overflow-hidden 
                 ${menuOpen ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'}
             `}>
-                <div className="flex flex-col gap-2 pb-4">
+                <div className="flex flex-col gap-6 pb-4">
                     {/* Navigation Links */}
                     <div className="grid grid-cols-2 gap-2 mb-4">
-                        {navItems.map((item) => (
-                            <NavigationMenuItem key={item.name} className='list-none'>
+                        {navLinks.map((link) => (
+                            <NavigationMenuItem key={link.href} className='list-none'>
                                 <NavigationMenuLink 
-                                    href={item.href}
-                                    className={`block px-4 py-2 text-center rounded-lg transition-all duration-200 font-medium text-foreground hover:bg-accent/20 hover:text-accent`}
-                                    onClick={() => setMenuOpen(false)}
+                                    href={link.href}
+                                    className='block text-center py-2 px-4 rounded-lg font-medium transition-all duration-200 text-foreground hover:bg-accent/50'
                                 >
-                                    {item.name}
+                                    {link.label}
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                         ))}
                     </div>
                     
-                    {/* Controls */}
-                    <div className='flex justify-center gap-2 pt-2 border-t border-border/30'>
-                        <ThemeSwitcher className="rounded-lg hover:bg-accent/50" />
-                        <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={toggleLanguage}
-                            className="rounded-lg hover:bg-accent/50 transition-all duration-200"
-                            title={`Switch to ${language === 'pl' ? 'English' : 'Polish'}`}
-                        >
-                            <Globe className="h-4 w-4 text-foreground" />
-                            <span className="ml-1 text-xs font-medium">
-                                {language.toUpperCase()}
-                            </span>
-                        </Button>
-                    </div>
+                    {/* CTA Button */}
+                    <NavigationMenuItem className='list-none'>
+                        <NavigationMenuLink href="/contact" className='block'>
+                            <Button variant="light" size="default" className="w-full">
+                                {t('hero.cta.primary')}
+                            </Button>
+                        </NavigationMenuLink>
+                    </NavigationMenuItem>
                 </div>
             </div>
 
+
+
+
+
+
             {/* Desktop Navigation */}
-            <div className="w-full hidden lg:flex justify-between items-center">
+            <div className="w-full hidden lg:flex md:gap-8 lg:gap-20 justify-between items-center">
+
                 {/* Left Navigation */}
-                <div className="flex items-center gap-1">
-                    {navItems.slice(0, 2).map((item) => (
-                        <NavigationMenuItem key={item.name} className='list-none'>
+                <div className="flex items-center">
+                    <div className="logo">
+                        <NavigationMenuItem className='list-none'>
                             <NavigationMenuLink 
-                                href={item.href}
-                                className='px-4 py-2 rounded-full text-foreground hover:bg-accent/20 hover:text-accent transition-all duration-200 font-medium text-sm'
+                                href="/" 
+                                className=' font-bold text-lg  duration-300 text-foreground '
                             >
-                                {item.name}
+                            <Image width={100} height={100} src="/KM-logo.png" alt="KM-Design Logo" className="h-16 w-auto"/>
+
+                            </NavigationMenuLink>
+                        </NavigationMenuItem>
+                    </div>
+                </div>
+
+                {/* Center Navigation */}
+                <div className="flex items-center md:gap-4 lg:gap-6 ">
+                    {navLinks.map((link) => (
+                        <NavigationMenuItem key={link.href} className='list-none'>
+                            <NavigationMenuLink 
+                                href={link.href}
+                                className='font-semibold xs:text-sm text-md hover:scale-105 transition-transform duration-200 text-foreground hover:animate-pulse hover:bg-transparent'
+                            >
+                                <p>{link.label}</p>
                             </NavigationMenuLink>
                         </NavigationMenuItem>
                     ))}
                 </div>
-
-                {/* Center Logo */}
-                <NavigationMenuItem className='list-none'>
-                    <NavigationMenuLink 
-                        href="/" 
-                        className='font-bold text-xl hover:scale-105 transition-transform duration-200 text-foreground hover:animate-pulse hover:bg-transparent'
-                    >
-                        KFreelance
-                    </NavigationMenuLink>
-                </NavigationMenuItem>
+                <div className="flex items-center gap-4">
 
                 {/* Right Navigation */}
-                <div className="flex items-center gap-1">
-                    {navItems.slice(2).map((item) => (
-                        <NavigationMenuItem key={item.name} className='list-none'>
-                            <NavigationMenuLink 
-                                href={item.href}
-                                className='px-4 py-2 rounded-full text-foreground hover:bg-accent/20 hover:text-accent transition-all duration-200 font-medium text-sm'
-                            >
-                                {item.name}
-                            </NavigationMenuLink>
-                        </NavigationMenuItem>
-                    ))}
-                    
-                    {/* Controls */}
-                    <div className="flex items-center gap-2 ml-2 pl-2 border-l border-border/30">
-                        <ThemeSwitcher 
-                            variant="ghost"
-                            size="sm"
-                            className="w-8 h-8 p-0 rounded-full hover:bg-accent/50"
-                        />
-                        
-                        <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={toggleLanguage}
-                            className="h-8 px-2 rounded-full hover:bg-accent/50 transition-all duration-200"
-                            title={`Switch to ${language === 'pl' ? 'English' : 'Polish'}`}
-                        >
-                            <Globe className="h-4 w-4 text-foreground" />
-                            <span className="ml-1 text-xs font-medium">
-                                {language.toUpperCase()}
-                            </span>
-                        </Button>
+                <div className="flex items-center">
+                    <NavigationMenuItem className='list-none'>
+                        <NavigationMenuLink href="/contact">
+                            <Button variant="light" size="lg">
+                                {t('hero.cta.primary')}
+                            </Button>
+                        </NavigationMenuLink>
+                    </NavigationMenuItem>
                     </div>
                 </div>
             </div>
