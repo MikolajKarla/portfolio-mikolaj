@@ -6,65 +6,43 @@ import { ArrowRight } from "lucide-react";
 import { useEffect } from "react";
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useGSAP } from "@gsap/react";
 
 export default function Home() {
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
-
-    const ctx = gsap.context(() => {
-      const sections = gsap.utils.toArray<HTMLElement>(".entry")
-
-      sections.forEach((section) => {
-        const meta = section.querySelector(".meta")
-        const media = section.querySelector(".media")
-
-        if (!meta || !media) return
-
-        gsap.set([meta, media], { xPercent: 100, opacity: 0 })
-
-        gsap.to(meta, {
-          scrollTrigger: {
-            trigger: section,
-            start: "top center",
-            end: "bottom +=300",
-            toggleActions: "play none none reverse",
-            markers:true,
-            scrub: true
-          },
-          xPercent: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power3.out",
-        })
-
-        gsap.to(media, {
-          scrollTrigger: {
-            trigger: section,
-            start: "top center",
-            end: "bottom +=300",
-            toggleActions: "play none none reverse",
-            markers:true,
-            scrub: true
-          },
-          xPercent: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power3.out",
-        })
-      })
+  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(useGSAP)
+  
+  
+  useGSAP(()=>{
+    const container = document.querySelector(".horizontal")
+    const sections = gsap.utils.toArray(".horizontal .entry")
+    console.log(sections,container)
+    const dist = document.querySelector(".horizontal")?.clientWidth*sections.length
+    console.log(dist)
+      gsap.to(sections, {
+      xPercent: -100 * (sections.length - 1),
+      ease: "none",
+      scrollTrigger: {
+          trigger: container,
+          markers:true,
+          start:"center center",
+          end: () => `+=${dist*0.6}`,
+          scrub: 1,
+          pin:true,
+          snap: 1 / (sections.length - 1),
+      },
     })
 
-    return () => ctx.revert()
-  }, [])
+})
 
 
   return (
-    <div className="min-h-screen lg:w-3/4 md:w-5/6 mx-auto flex flex-col gap-20">
+    <div className="min-h-screen overflow-x-hidden lg:w-full md:w-5/6 mx-auto items-center  flex flex-col gap-20">
 
 
       {/* Hero Section with Glassmorphism */}
-      <section className="lg:py-40 px-10 lg:flex-row flex flex-col items-center justify-center gap-10 ">
+      <section className="lg:py-40 px-10 lg:flex-row lg:w-3/4 flex flex-col items-center justify-center gap-10 ">
         <div className="left w-1/2 font-light">
           <h1>
             Nowoczesne aplikacje, sklepy i strony internetowe dla twojego
@@ -105,73 +83,72 @@ export default function Home() {
         </div>
       </section>
       <h2 className="text-center">Czym się zajmujemy?</h2>
-      
-      <section id="services" className="portfolio flex flex-col items-center justify-center gap-20 lg:pb-40 lg:pt-10">
-        {/* Entry 1 */}
-        <div className="entry flex lg:flex-row flex-col items-center justify-between gap-10 w-full">
-          <div className="meta lg:w-1/2 w-full">
-            <h2>Strony Internetowe</h2>
-            <p>Tworzymy responsywne strony internetowe, które przyciągają uwagę i konwertują odwiedzających w klientów. Nowoczesny design, szybkie ładowanie i SEO.</p>
+      <section className="horizontal justify-items-start flex flex-nowrap flex-row ">
+          {/* Entry 1 */}
+          <div className="entry flex w-full flex-shrink-0 flex-col  items-center justify-between gap-10 lg:px-30 px-10 lg:flex-row">
+            <div className="meta w-full lg:w-1/2">
+              <h2>Strony Internetowe</h2>
+              <p>Tworzymy responsywne strony internetowe, które przyciągają uwagę i konwertują odwiedzających w klientów. Nowoczesny design, szybkie ładowanie i SEO.</p>
+            </div>
+            <div className="media flex w-full justify-center lg:w-1/2">
+              <Image
+                src="/Section1MainPage.svg"
+                alt="Strony Internetowe"
+                width={550}
+                height={550}
+              />
+            </div>
           </div>
-          <div className="media lg:w-1/2 w-full flex justify-center">
-            <Image
-              src="/Section1MainPage.svg"
-              alt="Strony Internetowe"
-              width={550}
-              height={550}
-            />
-          </div>
-        </div>
 
-        {/* Entry 2 */}
-        <div className="entry flex lg:flex-row flex-col items-center justify-between gap-10 w-full">
-          <div className="meta lg:w-1/2 w-full">
-            <h2>Aplikacje Webowe</h2>
-            <p>Projektujemy i budujemy zaawansowane aplikacje webowe dostosowane do Twoich potrzeb biznesowych. Skalowalne, bezpieczne i intuicyjne.</p>
+          {/* Entry 2 */}
+          <div className="entry flex w-full flex-shrink-0 flex-col items-center justify-between gap-10 lg:px-30 px-10 lg:flex-row">
+            <div className="meta w-full lg:w-1/2">
+              <h2>Aplikacje Webowe</h2>
+              <p>Projektujemy i budujemy zaawansowane aplikacje webowe dostosowane do Twoich potrzeb biznesowych. Skalowalne, bezpieczne i intuicyjne.</p>
+            </div>
+            <div className="media flex w-full justify-center lg:w-1/2">
+              <Image
+                src="/Section2MainPage.svg"
+                alt="Aplikacje Webowe"
+                width={550}
+                height={550}
+              />
+            </div>
           </div>
-          <div className="media lg:w-1/2 w-full flex justify-center">
-            <Image
-              src="/Section1MainPage.svg"
-              alt="Aplikacje Webowe"
-              width={550}
-              height={550}
-            />
-          </div>
-        </div>
 
-        {/* Entry 3 */}
-        <div className="entry flex lg:flex-row flex-col items-center justify-between gap-10 w-full">
-          <div className="meta lg:w-1/2 w-full">
-            <h2>E-commerce</h2>
-            <p>Kompleksowe rozwiązania e-commerce z integracją płatności, zarządzaniem magazynem i narzędziami marketingowymi. Zwiększ swoją sprzedaż online.</p>
+          {/* Entry 3 */}
+          <div className="entry flex w-full flex-shrink-0 flex-col items-center justify-between gap-10 lg:px-30 px-10 lg:flex-row">
+            <div className="meta w-full lg:w-1/2">
+              <h2>E-commerce</h2>
+              <p>Kompleksowe rozwiązania e-commerce z integracją płatności, zarządzaniem magazynem i narzędziami marketingowymi. Zwiększ swoją sprzedaż online.</p>
+            </div>
+            <div className="media flex w-full justify-center lg:w-1/2">
+              <Image
+                src="/Section3MainPage.svg"
+                alt="E-commerce"
+                width={550}
+                height={550}
+              />
+            </div>
           </div>
-          <div className="media lg:w-1/2 w-full flex justify-center">
-            <Image
-              src="/Section1MainPage.svg"
-              alt="E-commerce"
-              width={550}
-              height={550}
-            />
-          </div>
-        </div>
 
-        {/* Entry 4 */}
-        <div className="entry flex lg:flex-row flex-col items-center justify-between gap-10 w-full">
-          <div className="meta lg:w-1/2 w-full">
-            <h2>Automatyzacja</h2>
-            <p>Automatyzujemy procesy biznesowe, integrujemy systemy i tworzymy custom toolsy. Oszczędzaj czas i zwiększ efektywność swojego zespołu.</p>
+          {/* Entry 4 */}
+          <div className="entry flex w-full flex-shrink-0 flex-col items-center justify-between gap-10 lg:px-30 px-10 lg:flex-row">
+            <div className="meta w-full lg:w-1/2">
+              <h2>Automatyzacja</h2>
+              <p>Automatyzujemy procesy biznesowe, integrujemy systemy i tworzymy custom toolsy. Oszczędzaj czas i zwiększ efektywność swojego zespołu.</p>
+            </div>
+            <div className="media flex w-full justify-center lg:w-1/2">
+              <Image
+                src="/Section4MainPage.svg"
+                alt="Automatyzacja"
+                width={550}
+                height={550}
+              />
+            </div>
           </div>
-          <div className="media lg:w-1/2 w-full flex justify-center">
-            <Image
-              src="/Section1MainPage.svg"
-              alt="Automatyzacja"
-              width={550}
-              height={550}
-            />
-          </div>
-        </div>
       </section>
-      
+      <div className=" h-[500vh]"></div>
     </div>
   );
 }
