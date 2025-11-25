@@ -20,7 +20,7 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
 
   return (
     <Button
-      variant={variant}
+      variant={"light"}
       size={size}
       onClick={toggleTheme}
       className={`transition-all duration-200 ${className}`}

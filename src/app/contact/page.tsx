@@ -64,7 +64,7 @@ const faqs = [
 
 export default function Contact() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden text-white bg-radial ">
+    <div className="relative min-h-screen pt-12 w-full overflow-hidden text-white bg-radial ">
       <div className="relative mx-auto w-full max-w-8xl px-5 py-12 sm:px-6 lg:px-10 lg:py-20">
         <div className="grid w-full gap-4 sm:grid-cols-2 xl:grid-cols-4">
           <ContactForm className="w-full sm:col-span-2 p-3 xl:col-span-3" />

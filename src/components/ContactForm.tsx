@@ -4,12 +4,12 @@ import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { Mail, MessageSquare, PhoneCall } from 'lucide-react'
 import { cn } from '@/lib/utils'
-
 type ContactFormProps = {
   className?: string
 }
 
 function ContactForm({ className }: ContactFormProps) {
+
   return (
     <div className={cn('relative flex h-full w-full flex-col overflow-hidden rounded-xl border-2 border-stone-300 lg:rounded-tl-3xl bg-[var(--color-secondary)] text-white shadow-2xl', className)}>
 
