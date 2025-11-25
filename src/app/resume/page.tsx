@@ -28,18 +28,18 @@ export default function Resume() {
 
   const contactInfo = {
     name: "Mikołaj Karla",
-    title: "Frontend Developer & UI/UX Designer",
-    email: "hello@mikolajkarla.dev",
-    phone: "+48 123 456 789",
-    location: "Warszawa, Polska",
-    linkedin: "linkedin.com/in/mikolajkarla",
-    github: "github.com/mikolajkarla",
-    website: "mikolajkarla.dev"
+    title: "Student Informatyki & Web Developer",
+    email: "mikolajkarla@gmail.com",
+    phone: "+48 731 866 536",
+    location: "43-300 Bielsko-Biała, Koszyki 4",
+    linkedin: "#",
+    github: "github.com/MikolajKarla",
+    website: "#"
   }
 
-  const summary = `Doświadczony Frontend Developer z ponad 3-letnim stażem w tworzeniu nowoczesnych aplikacji web. 
-  Specjalizuję się w React, Next.js i TypeScript, łącząc umiejętności techniczne z poczuciem estetyki. 
-  Pasjonat clean code i najlepszych praktyk rozwoju oprogramowania.`
+  const summary = `Student 5. klasy w prywatnej szkole technicznej informatycznej w Bielsko-Białej. 
+  W wolnym czasie rozwijam zainteresowania programowaniem, tworząc aplikacje web dla szybszego czytania. 
+  Pasjonat sztuk wizualnych, biegania i inwestowania. Komunikatywna osoba odpowiedzialna za swoją pracę i zorientowana na zespół.`
 
   const experience = [
     {
@@ -87,10 +87,10 @@ export default function Resume() {
 
   const education = [
     {
-      institution: "Politechnika Warszawska",
-      degree: "Inżynier, Informatyka",
-      period: "2019 - 2023",
-      description: "Specjalizacja: Inżynieria Oprogramowania. Praca dyplomowa: 'Optymalizacja wydajności aplikacji React'"
+      institution: "Private IT Technical School",
+      degree: "Technik Informatyki",
+      period: "2021 - obecnie",
+      description: "Bielsko-Biała. Aktualnie uczeń 5. klasy. Ukończony egzamin zawodowy EE.09 z oceną praktyczną 96% i teoretyczną 90%."
     }
   ]
 
@@ -123,37 +123,37 @@ export default function Resume() {
 
   const certifications = [
     {
-      name: "AWS Certified Developer - Associate",
-      issuer: "Amazon Web Services",
-      date: "2023",
-      credentialId: "AWS-123456"
+      name: "Data Analysis Certificate",
+      issuer: "FreeCodeCamp",
+      date: "2024",
+      credentialId: "FCC-DataAnalysis"
     },
     {
-      name: "Meta Front-End Developer Certificate",
-      issuer: "Meta (Facebook)",
-      date: "2022",
-      credentialId: "META-789012"
+      name: "JavaScript Algorithm and Data Structures Certificate",
+      issuer: "FreeCodeCamp", 
+      date: "2024",
+      credentialId: "FCC-JavaScript"
     }
   ]
 
   const languages = [
     { name: "Polski", level: "Natywny" },
-    { name: "Angielski", level: "C1 - Zaawansowany" },
-    { name: "Niemiecki", level: "A2 - Podstawowy" }
+    { name: "Angielski", level: "B1/B2 - Średnio zaawansowany" },
+    { name: "Niemiecki", level: "A1/A2 - Podstawowy" }
   ]
 
   const projects = [
     {
-      name: "E-commerce Platform",
-      description: "Kompleksowa platforma e-commerce z panelem admin",
-      technologies: ["Next.js", "Stripe", "Prisma"],
-      url: "github.com/mikolajkarla/ecommerce"
+      name: "LDAP User Authentication Application (Laravel)",
+      description: "Aplikacja web do uwierzytelniania użytkowników z integracją LDAP",
+      technologies: ["Laravel", "PHP", "LDAP", "MySQL"],
+      url: "github.com/MikolajKarla"
     },
     {
-      name: "Task Management App",
-      description: "Aplikacja do zarządzania projektami z real-time updates",
-      technologies: ["React", "Socket.io", "Node.js"],
-      url: "github.com/mikolajkarla/taskmanager"
+      name: "Data Analyzing App (Next.js + FastAPI)",
+      description: "Aplikacja do wizualizacji i normalizacji danych",
+      technologies: ["Next.js", "FastAPI", "Python", "Pandas"],
+      url: "github.com/MikolajKarla/data-visualize.git"
     }
   ]
 

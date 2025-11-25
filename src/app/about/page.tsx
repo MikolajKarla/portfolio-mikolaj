@@ -28,68 +28,72 @@ export default function About() {
   }, [])
 
   const skills = [
-    { name: "React / Next.js", level: 95, category: "frontend" },
+    { name: "JavaScript", level: 95, category: "frontend" },
     { name: "TypeScript", level: 90, category: "frontend" },
-    { name: "TailwindCSS", level: 95, category: "frontend" },
-    { name: "Node.js", level: 85, category: "backend" },
-    { name: "Python", level: 80, category: "backend" },
-    { name: "PostgreSQL", level: 85, category: "backend" },
-    { name: "UI/UX Design", level: 88, category: "design" },
-    { name: "Figma", level: 90, category: "design" }
+    { name: "HTML/CSS", level: 98, category: "frontend" },
+    { name: "React.js", level: 85, category: "frontend" },
+    { name: "Next.js", level: 80, category: "frontend" },
+    { name: "Python", level: 85, category: "backend" },
+    { name: "PHP", level: 80, category: "backend" },
+    { name: "Node.js", level: 75, category: "backend" },
+    { name: "MySQL", level: 85, category: "database" },
+    { name: "MongoDB", level: 70, category: "database" },
+    { name: "Laravel", level: 80, category: "framework" },
+    { name: "FastAPI", level: 75, category: "framework" }
   ]
 
   const experience = [
     {
-      company: "Tech Startup",
-      position: "Senior Frontend Developer",
-      period: "2023 - Present",
-      description: "Tworzenie nowoczesnych aplikacji web w React i Next.js dla międzynarodowych klientów.",
-      technologies: ["React", "Next.js", "TypeScript", "TailwindCSS"]
-    },
-    {
-      company: "Digital Agency",
-      position: "Full Stack Developer",
-      period: "2022 - 2023",
-      description: "Rozwój aplikacji e-commerce i systemów CMS dla średnich firm.",
-      technologies: ["Node.js", "PostgreSQL", "React", "Express"]
-    },
-    {
-      company: "Freelance",
+      company: "Freelance - WordPress Development",
       position: "Web Developer",
-      period: "2021 - 2022",
-      description: "Samodzielna realizacja projektów dla lokalnych firm i startupów.",
-      technologies: ["JavaScript", "PHP", "WordPress", "MySQL"]
+      period: "2024.06 - 2025.02",
+      description: "Projektowanie i rozwijanie niestandardowych stron WordPress dla różnych klientów. Zarządzanie komunikacją z klientami przez cały cykl projektu od zbierania wymagań do finalnej realizacji.",
+      technologies: ["WordPress", "PHP", "MySQL", "HTML", "CSS", "JavaScript"]
+    },
+    {
+      company: "Record Sp. z o.o.",
+      position: "Praktykant IT",
+      period: "2024.11 - 2024.12",
+      description: "Praca w zespole nad projektami IT, zapoznawanie się z profesjonalnym środowiskiem pracy, demonstrowanie zaangażowania i chęci nauki nowych rozwiązań.",
+      technologies: ["Team Collaboration", "Professional Environment", "Various IT Tools"]
+    },
+    {
+      company: "Korepetycje prywatne",
+      position: "Korepetytor matematyki i informatyki", 
+      period: "2023 - 2025",
+      description: "Prowadzenie korepetycji z matematyki i informatyki, budowanie pozytywnych relacji z uczniami i rodzicami, dostosowywanie metod nauczania do indywidualnych potrzeb.",
+      technologies: ["Teaching", "Communication", "Problem Solving", "Individual Approach"]
     }
   ]
 
   const achievements = [
     {
       icon: Trophy,
-      title: "15+ projektów zrealizowanych",
-      description: "Udane wdrożenia dla różnych branż"
-    },
-    {
-      icon: Users,
-      title: "10+ zadowolonych klientów",
-      description: "Długoterminowe współprace"
-    },
-    {
-      icon: Code,
-      title: "50k+ linii kodu",
-      description: "Napisanych w ciągu ostatniego roku"
+      title: "Certyfikat Data Analysis",
+      description: "FreeCodeCamp - potwierdzenie umiejętności analizy danych"
     },
     {
       icon: BookOpen,
-      title: "Ciągły rozwój",
-      description: "Regularne kursy i certyfikacje"
+      title: "Certyfikat JavaScript Algorithms",
+      description: "FreeCodeCamp - algorytmy i struktury danych"
+    },
+    {
+      icon: Code,
+      title: "Student 5. klasy IT",
+      description: "Prywatna szkoła techniczna informatyczna"
+    },
+    {
+      icon: Users,
+      title: "Praktyka zawodowa (96%)",
+      description: "Ocena praktyczna z egzaminu EE.09"
     }
   ]
 
   const interests = [
-    { icon: Coffee, name: "Specialty Coffee", description: "Pasjonat kawiarskiej kultury" },
-    { icon: BookOpen, name: "Tech Books", description: "Czytanie o nowych technologiach" },
-    { icon: Palette, name: "Design", description: "Projektowanie UI/UX" },
-    { icon: Heart, name: "Open Source", description: "Wkład w społeczność" }
+    { icon: Palette, name: "Sztuki wizualne", description: "Pasja do tworzenia i oglądania sztuki" },
+    { icon: Coffee, name: "Bieganie", description: "Aktywność fizyczna i sport" },
+    { icon: BookOpen, name: "Programowanie", description: "Ciągłe uczenie się nowych technologii" },
+    { icon: Heart, name: "Inwestowanie", description: "Zainteresowanie rynkami finansowymi" }
   ]
 
   if (!mounted) return null
@@ -105,16 +109,14 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <Badge variant="secondary" className="mb-4">O mnie</Badge>
-              <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-gray-900 via-purple-800 to-blue-800 bg-clip-text text-transparent mb-6">
-                Cześć, jestem Mikołaj
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Frontend Developer z pasją do tworzenia wyjątkowych doświadczeń cyfrowych. 
-                Łączę umiejętności techniczne z poczuciem estetyki, aby tworzyć aplikacje, 
-                które są nie tylko funkcjonalne, ale także piękne.
-              </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6" style={{color: '#9f8a64'}}>
+            Cześć, jestem Mikołaj
+          </h1>
+          <p className="text-xl mb-8 leading-relaxed" style={{color: '#6b5b47'}}>
+            Student informatyki w prywatnej szkole technicznej w Bielsko-Białej. 
+            Pasjonat programowania, który w wolnym czasie tworzy aplikacje web, 
+            interesuje się sztukami wizualnymi i inwestowaniem.
+          </p>              <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
                   <Download className="mr-2 h-4 w-4" />
                   Pobierz CV
