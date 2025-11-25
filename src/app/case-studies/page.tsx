@@ -1,9 +1,22 @@
 import React from 'react'
 
-function page() {
+function CaseStudiesPage() {
   return (
-    <div>page</div>
+    <section className="flex min-h-[80vh] w-full items-center justify-center bg-[var(--color-secondary)] px-6 text-center text-white">
+      <div className="space-y-6">
+        <span className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.3em] text-white/60">
+          Wkrótce
+        </span>
+        <h1 className="text-4xl font-semibold grotesk sm:text-5xl md:text-6xl">Case studies już w przygotowaniu</h1>
+        <p className="mx-auto max-w-xl text-base text-white/70 sm:text-lg">
+          Zbieram najciekawsze projekty, by pokazać proces i efekty współpracy. Zajrzyj ponownie wkrótce lub napisz, jeśli chcesz dowiedzieć się więcej już teraz.
+        </p>
+        <div className="flex flex-col items-center gap-3 text-sm text-white/60">
+          <span>Masz pytania? Napisz na <a href="mailto:Contact@KarlaFreelancing.pl" className="text-white hover:underline">Contact@KarlaFreelancing.pl</a></span>
+        </div>
+      </div>
+    </section>
   )
 }
 
-export default page
+export default CaseStudiesPage
