@@ -2,7 +2,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Target } from "lucide-react";
 import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -30,13 +30,10 @@ export default function Home() {
 
       const matchMedia = gsap.matchMedia();
 
-      matchMedia.add("(min-width: 1024px)", () => {
         const totalSections = sections.length;
         if (totalSections <= 1) {
           return undefined;
         }
-
-        const scrollDistance = () => sections[0].offsetWidth * (totalSections - 1);
 
         return gsap.to(sections, {
           xPercent: -100 * (totalSections - 1),
@@ -44,26 +41,37 @@ export default function Home() {
           scrollTrigger: {
             trigger: containerEl,
             start: "center center",
-            end: () => `+=${scrollDistance()}`,
+            end: () => `+=${window.innerWidth*totalSections}`,
             scrub: 0.5,
             pin: true,
+            pinSpacing:true,
             invalidateOnRefresh: true,
-            markers:true
           },
         });
       });
 
-      return () => matchMedia.revert();
-    },
-    { scope: containerRef },
-  );
+  
+  useGSAP(
+    ()=>{
+    const img = document.querySelector(".bg")
+    ScrollTrigger.create({
+      trigger:".case-studies",
+      start:"center center",
+      end:`+${window.innerHeight * 6}`,
+      pin:true,
+      pinSpacing:true, 
+      onUpdate:(self)=>{
+        const progress = self.progress
+        console.log(progress);
 
+      }
+    })
+  }
+  
+  )
 
   return (
-    <div className="flex min-h-screen w-full flex-col items-center gap-16 overflow-x-hidden px-4 sm:px-6 md:w-5/6 md:gap-20 lg:w-full lg:px-0">
-
-
-      {/* Hero Section with Glassmorphism */}
+    <div className="flex min-h-screen w-full flex-col items-center gap-16 overflow-x-hidden md:gap-20 lg:w-full lg:px-0">
       <section className="flex w-full max-w-5/6  h-2/3 flex-col-reverse items-center justify-between gap-12  py-16 sm:py-24 lg:flex-row lg:gap-16 lg:py-32">
         <div className="left w-full text-center font-light lg:w-1/2 lg:text-left">
           <h1 className="text-3xl  grotesk sm:text-4xl lg:text-5xl ">
@@ -103,8 +111,9 @@ export default function Home() {
           <div />
         </div>
       </section>
-      <div className="bg-change w-full">
-        <h2 className="px-2 text-center text-2xl h1 lg:text-5xl sm:text-3xl">Czym się zajmujemy?</h2>
+      {/* #TODO: dodac tutaj animacje tekstu i pb */}
+        <h2 className="px-2 text-center text-2xl h1 lg:text-5xl sm:text-3xl">Czym się zajmujemy?</h2>  
+      <div className="w-full overflow-hidden">
       <section
         ref={containerRef}
         className="horizontal relative flex flex-row gap-12 overflow-hidden py-12 sm:py-16 lg:items-center h-screen lg:flex-row lg:gap-0 lg:py-0"
@@ -181,6 +190,46 @@ export default function Home() {
           </div>
       </section>
       </div>
+      
+
+      <section className="spotlight relative content-center overflow-hidden ">
+        <section className="case-studies  " >
+        <img className="bg h-50 w-50" src="Logo.svg" alt="logo" />
+        </section>
+      </section>
+
+      <section className="faq text-center  text-white py-20 text-xl bg-[var(--color-secondary)] min-w-full">
+        <span className="text-neutral-500 ">Przeczytaj najczęstsze pytania</span>
+        <h3 className="text-2xl">Masz obawy przed zaczęciem współpracy?</h3>
+        <div className="flex px-40 gap-40  py-25 ">
+          <div className="left w-1/2 text-left">
+          <p>To normalne. Zebraliśmy i wyczerpująco odpowiedzieliśmy na wszystkie pytania, które najczęściej pojawiają się przed podjęciem decyzji o nowej inwestycji cyfrowej. <b> Nasza współpraca opiera się na pełnej transparentności.</b></p>
+          </div>
+          <div className="right w-1/2 text-left flex flex-col  gap-12">
+            <div className="icon-text flex text-3xl gap-6">
+              <div className="icon w-1/12">X</div>
+              <div className="text w-11/12">Gwarancję i wsparcie strony</div>
+            </div>
+            <div className="icon-text flex text-3xl gap-6">
+              <div className="icon w-1/12">X</div>
+              <div className="text w-11/12">Gwarancję i wsparcie strony</div>
+            </div>
+            <div className="icon-text flex text-3xl gap-6">
+              <div className="icon w-1/12">X</div>
+              <div className="text w-11/12">Gwarancję i wsparcie strony</div>
+            </div>
+            <div className="icon-text flex text-3xl gap-6">
+              <div className="icon w-1/12">X</div>
+              <div className="text w-11/12">Gwarancję i wsparcie strony</div>
+            </div>
+            <div className="icon-text flex text-3xl gap-6">
+              <div className="icon w-1/12">X</div>
+              <div className="text w-11/12">Gwarancję i wsparcie strony</div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

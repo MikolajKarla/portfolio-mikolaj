@@ -89,3 +89,6 @@ body {
 .header-hidden {
   top: -60px; /* Przesuń poza widok o jego własną wysokość */
 }
+.squircle{
+  corner-shape:squircle
+}
