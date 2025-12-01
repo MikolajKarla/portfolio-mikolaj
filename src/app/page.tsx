@@ -36,19 +36,19 @@ export default function Home() {
           return undefined;
         }
 
-        const scrollDistance = () => sections[0].offsetWidth * (totalSections - 1);
+        const scrollDistance = () => containerEl.scrollWidth - containerEl.clientWidth;
 
         return gsap.to(sections, {
           xPercent: -100 * (totalSections - 1),
           ease: "none",
           scrollTrigger: {
             trigger: containerEl,
-            start: "center center",
+            start: "top top",
             end: () => `+=${scrollDistance()}`,
             scrub: 0.5,
             pin: true,
-            invalidateOnRefresh: true,
-            markers:true
+            anticipatePin: 1,
+            pinSpacing: true,
           },
         });
       });
@@ -103,8 +103,9 @@ export default function Home() {
           <div />
         </div>
       </section>
-      <div className="bg-change w-full">
         <h2 className="px-2 text-center text-2xl h1 lg:text-5xl sm:text-3xl">Czym się zajmujemy?</h2>
+        <div className="spacer h-[350vw]"></div>
+      <div className=" left-0 absolute top-[125vh] w-full">
       <section
         ref={containerRef}
         className="horizontal relative flex flex-row gap-12 overflow-hidden py-12 sm:py-16 lg:items-center h-screen lg:flex-row lg:gap-0 lg:py-0"
