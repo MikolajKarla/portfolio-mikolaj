@@ -41,7 +41,7 @@ export default function RootLayout({
               <Header />
             </header>
 
-            <main className="pt-16 mx-auto w-full">
+            <main className="mx-auto w-full ">
               {children}
               <div className="fixed bottom-6 right-6 z-50">
                 <LanguageSwitcher />
