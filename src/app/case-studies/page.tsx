@@ -8,19 +8,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const heroHighlights = [
-	"SaaS B2B",
-	"E-commerce",
-	"Marki osobiste",
-	"Platformy edukacyjne",
-];
-
-const keyMetrics = [
-	{ label: "Średni wzrost konwersji", value: "+38%" },
-	{ label: "Średni czas wdrożenia", value: "12 tygodni" },
-	{ label: "Średni ROI po 6 mies.", value: "3.4x" },
-];
-
 const caseStudies = [
 	{
 		client: "RetailX",
@@ -104,13 +91,7 @@ export default function CaseStudiesPage() {
 	const metricsRef = useRef<HTMLDivElement | null>(null);
 	const [highlightIndex, setHighlightIndex] = useState(0);
 
-	useEffect(() => {
-		const intervalId = window.setInterval(() => {
-			setHighlightIndex((prev) => (prev + 1) % heroHighlights.length);
-		}, 2400);
 
-		return () => window.clearInterval(intervalId);
-	}, []);
 
 	useGSAP(
 		() => {
@@ -191,13 +172,7 @@ export default function CaseStudiesPage() {
 					<h1 className="text-3xl font-semibold grotesk sm:text-4xl lg:text-5xl">
 						Projekty, które dowożą realne wyniki
 					</h1>
-					<h2
-						ref={highlightRef}
-						key={heroHighlights[highlightIndex]}
-						className="text-4xl font-bold space-mono sm:text-5xl lg:text-6xl"
-					>
-						{heroHighlights[highlightIndex]}
-					</h2>
+				
 					<p className="max-w-3xl text-base text-neutral-600 sm:text-lg">
 						Tworzymy produkty cyfrowe oparte o dane i strategię. Każdy projekt to proces, który łączy design, technologię i cele biznesowe klienta.
 					</p>
@@ -206,26 +181,14 @@ export default function CaseStudiesPage() {
 
 			<section ref={metricsRef} className="mx-auto w-full max-w-5xl px-6">
 				<div className="grid gap-6 md:grid-cols-3">
-					{keyMetrics.map((metric) => (
-						<div
-							key={metric.label}
-							data-metric
-							className="rounded-3xl border border-black/5 bg-neutral-50 px-6 py-8 text-center shadow-sm"
-						>
-							<p className="text-sm uppercase text-neutral-500">{metric.label}</p>
-							<p className="mt-4 text-3xl font-semibold space-mono text-neutral-900">
-								{metric.value}
-							</p>
-						</div>
-					))}
+					
 				</div>
 			</section>
 
-			<section className="relative">
-				<div className="spacer h-[100vw] lg:h-[160vw]"></div>
+			<section className="">
 				<div
 					ref={containerRef}
-					className="case-scroll relative flex flex-row gap-8 overflow-hidden px-6 py-10 lg:px-16"
+					className="case-scroll  flex flex-row gap-8 overflow-hidden px-6 py-10 lg:px-16"
 				>
 					{caseStudies.map((study) => (
 						<article

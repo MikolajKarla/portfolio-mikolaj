@@ -3,12 +3,22 @@ import { useGSAP } from '@gsap/react';
 import React, { useRef, useState } from 'react'
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 gsap.registerPlugin(ScrollTrigger);
 
 function Page() {
 
-  const offer = ["Strony Internetowe","E-commerce", "Aplikacje Webowe", "SEO Techniczne", "Automatyzacja", "Wsparcie IT"];
+  const { t } = useLanguage();
+
+  const offer = [
+    t('websites.hero.offer.0'),
+    t('websites.hero.offer.1'),
+    t('websites.hero.offer.2'),
+    t('websites.hero.offer.3'),
+    t('websites.hero.offer.4'),
+    t('websites.hero.offer.5'),
+  ];
   const offerRef = useRef(null);
   const [offerCounter, setOfferCounter] = useState(0);
   useGSAP(() => {
@@ -111,32 +121,32 @@ useGSAP(() => {
       <div className='relative'>
       <div className="min-h-screen flex flex-col justify-center items-center gap-12 px-12 text-center lg:px-0 pb-32">
         <div className=' flex flex-col'>
-        <h1 className='text-6xl font-black space-mono'>Wszystko, co Cyfrowe:</h1>
-        <h1 ref={offerRef} className='text-6xl font-bold space-mono text-shadow-xl bg-gradient-to-t from-[#B98F5F] from-10% to-[#FEDFBD] to-60%  bg-clip-text text-transparent py-6'>{offer[offerCounter]}</h1>
-        <h1 className='text-6xl font-bold space-mono'>W jednym miejscu.</h1>
+        <h1 className='text-5xl font-black space-mono'>{t('websites.hero.heading1')}</h1>
+        <h1 ref={offerRef} className='text-5xl font-bold space-mono text-shadow-xl bg-gradient-to-t from-[#B98F5F] from-10% to-[#FEDFBD] to-60%  bg-clip-text text-transparent py-6'>{offer[offerCounter]}</h1>
+        <h1 className='text-5xl font-bold space-mono'>{t('websites.hero.heading2')}</h1>
         </div>
-        <span className='w-6/12 px-12 h3 text-center '>Nasze strony internetowe, aplikacje i sklepy są projektowane, aby generować mierzalne rezultaty. Stawiamy na intuicyjny User Experience (UX) i czysty kod, który maksymalizuje zyski.</span>
+        <span className='w-6/12 px-12 h3 text-center '>{t('websites.hero.description')}</span>
 
       </div>
       <div className="min-h-screen w-full flex flex-row items-center justify-center gap-6 px-14 bg-gradient-to-t from-[#3E3E3E] to-[#000000]">
         <div className="box rounded-4xl py-6 px-2">
-          <h1 className='text-3xl space-mono pt-4 pb-8 text-white '>Rozmowa i Decyzja:</h1>
-          <span className='text-white px-4 text-lg'>Zaczynamy od dokładnej rozmowy na temat Twojego biznesu i celów. Ustalamy, jak najlepiej wykonać projekt (technologia, funkcjonalności) i dogrywamy wszystkie szczegóły.</span>
+          <h1 className='text-3xl space-mono pt-4 pb-8 text-white '>{t('websites.process.step1.title')}</h1>
+          <span className='text-white px-4 text-lg'>{t('websites.process.step1.description')}</span>
     
         </div>
         <div className="box rounded-4xl py-6  px-2">
-          <h1 className='text-3xl  space-mono pt-4 pb-8 text-white '>Planowanie i Rozpisanie Zadań:</h1>
-          <span className='text-white px-4 text-lg'>Cały projekt jest rozpisany na konkretne zadania w przejrzystej aplikacji, którą uzgodnimy wcześniej. Domyślnie używam ClickUp’a</span>
+          <h1 className='text-3xl  space-mono pt-4 pb-8 text-white '>{t('websites.process.step2.title')}</h1>
+          <span className='text-white px-4 text-lg'>{t('websites.process.step2.description')}</span>
 
         </div>
         <div className="box rounded-4xl py-6 px-2">
-          <h1 className='text-3xl space-mono pt-4 pb-8 text-white '>Weryfikacja Postępów:</h1>
-          <span className='text-white px-4 text-lg'>Pokazuję Ci postępy na każdym etapie tworzenia na dedykowanym serwerze testowym. Dzięki temu masz pewność, że wszystko jest zgodne z Twoimi oczekiwaniami.</span>
+          <h1 className='text-3xl space-mono pt-4 pb-8 text-white '>{t('websites.process.step3.title')}</h1>
+          <span className='text-white px-4 text-lg'>{t('websites.process.step3.description')}</span>
 
         </div>
         <div className="box rounded-4xl py-6 px-2">
-          <h1 className='text-3xl space-mono pt-4 pb-8 text-white '>Wdrożenie i Uruchomienie:</h1>
-          <span className='text-white px-4 text-lg'>Po Twojej akceptacji przenosimy gotową stronę na serwer docelowy, upewniając się, że wszystko działa płynnie i bezbłędnie.</span>
+          <h1 className='text-3xl space-mono pt-4 pb-8 text-white '>{t('websites.process.step4.title')}</h1>
+          <span className='text-white px-4 text-lg'>{t('websites.process.step4.description')}</span>
         </div>
 
 
@@ -146,15 +156,15 @@ useGSAP(() => {
       <div className="cases px-30 h-[100vh]">
         <div className="case flex">
           <div className="case-content w-1/2 flex items-center justify-center flex-col px-12">
-            <h2 className='text-4xl font-bold space-mono mb-4'>Wykonanie:</h2>
+            <h2 className='text-4xl font-bold space-mono mb-4'>{t('websites.case.title')}</h2>
             <div>
                 <ul className='list-disc list-inside text-lg flex flex-col gap-2'>
                 {[
-                  'Design',
-                  'Stworzenie nowej strony od zera',
-                  'Implementacja Pixel FB',
-                  'Wsparcie i Poprawki',
-                  'Wdrożenie na hosting',
+                  t('websites.caseOne.items.design'),
+                  t('websites.caseOne.items.build'),
+                  t('websites.caseOne.items.pixel'),
+                  t('websites.caseOne.items.support'),
+                  t('websites.caseOne.items.hosting'),
                 ].map((item) => (
                   <li
                   key={item}
@@ -167,10 +177,10 @@ useGSAP(() => {
                 ))}
                 <li className="list list-none rounded border-transparent [background:linear-gradient(160deg,#cacaca,#000000)] p-[3px]">
                   <div className="block rounded bg-white px-5 py-2 space-y-2 text-gray-900">
-                                  <ul className='list-disc list-inside text-lg flex flex-col gap-2'>Wyniki PageSpeed:</ul>
+                    <ul className='list-disc list-inside text-lg flex flex-col gap-2'>{t('websites.case.pagespeed.title')}</ul>
                   <div className="flex flex-col text-sm">
-                    <span>Wydajność: 84,5%</span>
-                    <span>SEO: 100%</span>
+                    <span>{t('websites.case.pagespeed.performance')} 84,5%</span>
+                    <span>{t('websites.case.pagespeed.seo')} 100%</span>
                   </div>
                   </div>
                 </li>
@@ -179,7 +189,7 @@ useGSAP(() => {
 
           </div>
           <div className="case-content w-1/2">
-            <img src="RezydencjaMockup.png" alt="" />
+            <img src="RezydencjaMockup.png" alt={t('websites.caseOne.imageAlt')} />
           </div>
 
         </div>
@@ -194,17 +204,17 @@ useGSAP(() => {
       <div className="cases2 px-30 h-[100vh]">
         <div className="case flex">
    <div className="case-content w-1/2">
-            <img src="AgataMockup.png" alt="" />
+            <img src="AgataMockup.png" alt={t('websites.caseTwo.imageAlt')} />
           </div>
           <div className="case-content w-1/2 flex items-center justify-center flex-col px-12">
-            <h2 className='text-4xl font-bold space-mono mb-4'>Wykonanie:</h2>
+            <h2 className='text-4xl font-bold space-mono mb-4'>{t('websites.case.title')}</h2>
             <div>
                 <ul className='list-disc list-inside text-lg flex flex-col gap-2'>
                 {[
-                  'Stworzenie strony',
-                  'Wdrożenie Woocommerce',
-                  'Wdrożenie platformy E-learningowej Learndash',
-                  'Newsletter',
+                  t('websites.caseTwo.items.build'),
+                  t('websites.caseTwo.items.woocommerce'),
+                  t('websites.caseTwo.items.elearning'),
+                  t('websites.caseTwo.items.newsletter'),
                 ].map((item) => (
                   <li
                   key={item}
@@ -217,10 +227,10 @@ useGSAP(() => {
                 ))}
                 <li className="list2 list-none rounded border-transparent [background:linear-gradient(160deg,#cacaca,#000000)] p-[3px]">
                   <div className="block rounded bg-white px-5 py-2 space-y-2 text-gray-900">
-                  <ul className='list-disc list-inside text-lg flex flex-col gap-2'>Wyniki PageSpeed:</ul>
+                  <ul className='list-disc list-inside text-lg flex flex-col gap-2'>{t('websites.case.pagespeed.title')}</ul>
                   <div className="flex flex-col text-sm">
-                    <span>Wydajność: 85%</span>
-                    <span>SEO: 100%</span>
+                    <span>{t('websites.case.pagespeed.performance')} 85%</span>
+                    <span>{t('websites.case.pagespeed.seo')} 100%</span>
                   </div>
                   </div>
                 </li>
