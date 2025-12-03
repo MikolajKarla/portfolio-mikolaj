@@ -64,7 +64,7 @@ function Page() {
   }, []);
 
   useGSAP(() => {
-    let tl = gsap.timeline({
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".cases",
         start: "bottom bottom",
@@ -91,7 +91,7 @@ function Page() {
 
   }, []);
 useGSAP(() => {
-    let tl = gsap.timeline({
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: ".cases2",
         start: "bottom bottom",
