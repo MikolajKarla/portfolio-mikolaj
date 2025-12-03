@@ -73,12 +73,12 @@ export default function Home() {
   return (
     <div className="flex min-h-screen w-full flex-col items-center gap-16 overflow-x-hidden md:gap-20 lg:w-full lg:px-0">
       <section className="flex w-full max-w-5/6  h-2/3 flex-col-reverse items-center justify-between gap-12  py-16 sm:py-24 lg:flex-row lg:gap-16 lg:py-32">
-        <div className="left w-full text-center font-light lg:w-1/2 lg:text-left">
-          <h1 className="text-3xl  grotesk sm:text-4xl lg:text-5xl ">
+        <div className="left w-full text-center font-light lg:w-2/3 lg:text-left">
+          <h1 className="text-3xl font-medium space-mono sm:text-4xl lg:text-5xl ">
             Nowoczesne aplikacje, sklepy i strony internetowe dla twojego
             biznesu.
           </h1>
-          <h3 className="lg:text-2xl pt-8 text-base text-neutral-500 sm:text-lg">
+          <h3 className="lg:text-2xl pt-8 text-base text-neutral-500 pr-10 sm:text-lg">
             Budujemy cyfrowe narzędzia , które faktycznie realizują Twoje cele
             biznesowe. Stawiam na nowoczesny design i czysty kod.
           </h3>

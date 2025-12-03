@@ -72,6 +72,9 @@ body {
   font-family: var(--font-grotesk), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
+.space-mono{
+  font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
 
 
 #main-header {
@@ -84,7 +87,19 @@ body {
   transition: top 0.3s ease-in-out; /* Animacja płynnego chowania/pokazywania */
   z-index: 1000;
 }
-
+.box{
+  width: 100%;
+  height: 60vh;
+  text-align: center;
+  box-shadow: 5 5 40px rgba(0, 0, 0, 0.5);
+  background-image: linear-gradient(
+    -20deg,
+    #ebebeb -80%,
+    #000000 35%,
+    #000000 60%,
+    #ebebeb 180%
+  );
+}
 /* Klasa, która faktycznie ukrywa nagłówek przesuwając go w górę poza ekran */
 .header-hidden {
   top: -60px; /* Przesuń poza widok o jego własną wysokość */
