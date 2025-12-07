@@ -3,7 +3,8 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import ContactForm from "@/components/ContactForm"
-import { Github, Linkedin, Twitter, Calendar, MessageCircle, Coffee } from "lucide-react"
+import { Github, Linkedin, Calendar, MessageCircle, Coffee } from "lucide-react"
+import { useLanguage } from "@/contexts/LanguageContext"
 
 const socialLinks = [
   {
@@ -18,51 +19,43 @@ const socialLinks = [
     url: "https://www.linkedin.com/in/miko%C5%82aj-karla-b445a1250/",
     username: "linkedin.com/in/mikolajkarla"
   },
-  {
-    icon: Twitter,
-    name: "X (Twitter)",
-    url: "https://twitter.com/mikolajkarla",
-    username: "@mikolajkarla"
-  }
 ]
 
 const highlightItems = [
   {
     icon: Calendar,
-    title: "Konsultacja 30 min",
-    description: "Pierwsza rozmowa online, żeby poznać cele i zakres projektu."
+    titleKey: "contact.process.items.consult.title",
+    descriptionKey: "contact.process.items.consult.description",
   },
   {
     icon: MessageCircle,
-    title: "Warsztat discovery",
-    description: "Wspólne doprecyzowanie funkcji, strategii i harmonogramu."
+    titleKey: "contact.process.items.discovery.title",
+    descriptionKey: "contact.process.items.discovery.description",
   },
   {
     icon: Coffee,
-    title: "Spotkanie na żywo",
-    description: "Możliwość spotkania w Warszawie, jeśli preferujesz rozmowę offline."
-  }
+    titleKey: "contact.process.items.meeting.title",
+    descriptionKey: "contact.process.items.meeting.description",
+  },
 ]
 
 const faqs = [
   {
-    question: "Jak długo trwa realizacja projektu?",
-    answer:
-      "Czas zależy od złożoności: landing page do 2 tygodni, sklepy i aplikacje 4–8 tygodni, rozbudowane systemy 2–4 miesiące."
+    questionKey: "contact.faq.q1",
+    answerKey: "contact.faq.a1",
   },
   {
-    question: "Czy mogę liczyć na wsparcie po wdrożeniu?",
-    answer:
-      "Tak, oferuję 30 dni wsparcia w cenie projektu oraz pakiety maintenance dopasowane do Twoich potrzeb."
+    questionKey: "contact.faq.q2",
+    answerKey: "contact.faq.a2",
   },
   {
-    question: "Jak wygląda start współpracy?",
-    answer:
-      "Zaczynamy od konsultacji i warsztatu discovery, żeby zebrać wymagania i stworzyć roadmapę działań."
-  }
+    questionKey: "contact.faq.q3",
+    answerKey: "contact.faq.a3",
+  },
 ]
 
 export default function Contact() {
+  const { t } = useLanguage()
   return (
     <div className="relative min-h-screen pt-12 w-full overflow-hidden text-white bg-radial ">
       <div className="relative mx-auto w-full max-w-8xl px-5 py-12 sm:px-6 lg:px-10 lg:py-20">
@@ -75,20 +68,20 @@ export default function Contact() {
             <div className="pointer-events-none absolute inset-0  opacity-45" />
             <div className="relative h-full">
               <CardHeader>
-                <Badge variant="secondary" className="w-fit">Proces</Badge>
-                <CardTitle className="text-2xl font-semibold">Jak zaczynamy współpracę</CardTitle>
+                <Badge variant="secondary" className="w-fit">{t("contact.process.badge")}</Badge>
+                <CardTitle className="text-2xl font-semibold">{t("contact.process.title")}</CardTitle>
                 <CardDescription className="text-white/70 pb-4">
-                  Przejdziemy przez kluczowe etapy, żeby dostarczyć strategię i harmonogram dopasowany do Twoich celów.
+                  {t("contact.process.description")}
                 </CardDescription>
               </CardHeader>
               <CardContent className="grid gap-4   sm:grid-cols-1">
-                {highlightItems.map(({ icon: Icon, title, description }) => (
-                  <div key={title} className="flex flex-col gap-3 rounded-2xl border border-white/15 bg-white/5 p-5">
+                {highlightItems.map(({ icon: Icon, titleKey, descriptionKey }) => (
+                  <div key={titleKey} className="flex flex-col gap-3 rounded-2xl border border-white/15 bg-white/5 p-5">
                     <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[var(--color-accent)] text-[var(--color-secondary)]">
                       <Icon className="h-6 w-6" />
                     </span>
-                    <p className="text-lg font-semibold">{title}</p>
-                    <p className="text-sm text-white/70">{description}</p>
+                    <p className="text-lg font-semibold">{t(titleKey)}</p>
+                    <p className="text-sm text-white/70">{t(descriptionKey)}</p>
                   </div>
                 ))}
               </CardContent>
@@ -99,17 +92,17 @@ export default function Contact() {
             <div className="pointer-events-none absolute inset-0  opacity-45" />
             <div className="relative h-full">
               <CardHeader className="pb-6">
-                <Badge variant="secondary" className="w-fit">FAQ</Badge>
-                <CardTitle className="text-2xl font-semibold ">Najczęstsze pytania</CardTitle>
+                <Badge variant="secondary" className="w-fit">{t("contact.faq.badge")}</Badge>
+                <CardTitle className="text-2xl font-semibold ">{t("contact.faq.title")}</CardTitle>
                 <CardDescription className="text-white/70">
-                  Krótko i konkretnie o tym, jak przebiega współpraca. 
+                  {t("contact.faq.description")}
                 </CardDescription>
               </CardHeader>
               <CardContent className="grid gap-4 items-end  grid-cols-1 xl:grid-cols-2">
-                {faqs.map(({ question, answer }) => (
-                  <div key={question} className="flex flex-col gap-2 rounded-2xl border border-white/15 bg-white/10 p-5">
-                    <p className="text-sm font-semibold">{question}</p>
-                    <p className="text-sm text-white/70">{answer}</p>
+                {faqs.map(({ questionKey, answerKey }) => (
+                  <div key={questionKey} className="flex flex-col gap-2 rounded-2xl border border-white/15 bg-white/10 p-5">
+                    <p className="text-sm font-semibold">{t(questionKey)}</p>
+                    <p className="text-sm text-white/70">{t(answerKey)}</p>
                   </div>
                 ))}
               </CardContent>
@@ -121,10 +114,10 @@ export default function Contact() {
             <div className="pointer-events-none absolute inset-0  opacity-50" />
             <div className="relative h-full">
               <CardHeader>
-                <Badge variant="secondary" className="w-fit">Social Media</Badge>
-                <CardTitle className="text-xl font-semibold">Znajdź mnie w sieci</CardTitle>
+                <Badge variant="secondary" className="w-fit">{t("contact.social.badge")}</Badge>
+                <CardTitle className="text-xl font-semibold">{t("contact.social.title")}</CardTitle>
                 <CardDescription className="text-white/70 ">
-                  Aktualizacje projektowe i wskazówki dla przedsiębiorców.
+                  {t("contact.social.description")}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-3 pt-4">

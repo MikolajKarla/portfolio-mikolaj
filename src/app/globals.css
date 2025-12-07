@@ -107,3 +107,13 @@ body {
 .squircle{
   corner-shape:squircle
 }
+.bg-img-logo{
+  background-image: url('/KM-logo-opacity.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 60%;
+}
+.light-gradient-bg {
+  background: linear-gradient(135deg, #EED4B6 0%, #ffffff 60%);
+}
