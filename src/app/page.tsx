@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import FaqListItem from "@/components/ui/faq-list-item";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -211,10 +212,7 @@ export default function Home() {
           </div>
           <div className="right w-1/2 text-left flex flex-col  gap-12">
             {Array.from({ length: 5 }).map((_, index) => (
-              <div className="icon-text flex text-3xl gap-6" key={`faq-item-${index}`}>
-                <div className="icon w-1/12">X</div>
-                <div className="text w-11/12">{t("home.faq.item")}</div>
-              </div>
+              <FaqListItem key={`faq-item-${index}`} title={t(`home.faq.item${index + 1}.question`)} answer={t(`home.faq.item${index + 1}.answer`)} />
             ))}
           </div>
         </div>

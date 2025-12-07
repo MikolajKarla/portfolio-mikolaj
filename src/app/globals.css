@@ -117,3 +117,38 @@ body {
 .light-gradient-bg {
   background: linear-gradient(135deg, #EED4B6 0%, #ffffff 60%);
 }
+
+.icon-faq-1{
+  transition: transform 0.3s ease;
+}
+.icon-faq-2{
+  transition: transform 0.3s ease;
+}
+.faq-icon {
+  transition: transform 0.35s ease;
+}
+
+.faq-icon--open {
+  transform: scale(1.1);
+}
+
+.faq-icon-line {
+  transition: transform 0.65s ease, background-color 0.35s ease;
+  background-color: #ffffff;
+}
+
+.faq-icon--open .faq-icon-line {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.faq-answer {
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: max-height 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
+}
+
+.faq-answer--open {
+  max-height: 200px;
+  opacity: 1;
+  transform: translateY(0);
+}
