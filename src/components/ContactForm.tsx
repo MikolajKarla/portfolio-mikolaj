@@ -4,28 +4,56 @@ import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { Mail, MessageSquare, PhoneCall } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import Alert from './ui/alert'
+import { useLanguage } from '@/contexts/LanguageContext'
+
 type ContactFormProps = {
   className?: string
 }
 
 function ContactForm({ className }: ContactFormProps) {
+  const { t } = useLanguage()
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const form = e.currentTarget
+    const formData = new FormData(form)
 
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        body: formData,
+      })
+
+      if (response.ok) {
+        <Alert message="Wiadomość została wysłana pomyślnie!" type="success" />
+        form.reset()
+      } else {
+        const data = await response.json()
+        if (data.error) {
+        <Alert message={`Błąd podczas wysyłania wiadomości: ${data.error}`} type="error" />
+        } else {
+        <Alert message="Wystąpił nieznany błąd podczas wysyłania wiadomości." type="error" />
+        }
+      }
+    } catch (error) {
+      <Alert message={`Błąd podczas wysyłania wiadomości: ${String(error)}`} type="error" />
+    }
+  }
   return (
     <div className={cn('relative flex h-full w-full flex-col overflow-hidden rounded-xl border-2 border-stone-300 lg:rounded-tl-3xl bg-[var(--color-secondary)] text-white shadow-2xl', className)}>
-
       <div className="relative flex  h-full flex-col gap-10 p-8 sm:p-10">
         <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[0.95fr,1.05fr] lg:items-start lg:gap-12">
           <div className="space-y-6">
             <div className="space-y-3">
               <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-accent-dark)]">
                 <Mail className="h-4 w-4" />
-                Kontakt
+                {t('contact.form.badge')}
               </span>
               <h2 className="text-3xl font-semibold grotesk sm:text-4xl">
-                Porozmawiajmy o Twoim projekcie
+                {t('contact.form.title')}
               </h2>
               <p className="text-sm text-white/70 sm:text-base">
-                Wypełnij formularz, a odezwę się maksymalnie w ciągu 24 godzin z propozycją kolejnych kroków.
+                {t('contact.form.description')}
               </p>
             </div>
 
@@ -41,44 +69,44 @@ function ContactForm({ className }: ContactFormProps) {
                 </a>
               </div>
               <p className="text-xs text-white/50">
-                Twoje dane są bezpieczne – użyjemy ich wyłącznie do kontaktu związanego z zapytaniem.
+                {t('contact.form.dataSafety')}
               </p>
             </div>
           </div>
 
           <form
-            action="/api/send"
-            method="post"
+            onSubmit={handleSubmit}
+            
             className="space-y-6 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur"
           >
             <div className="grid gap-6 sm:grid-cols-2">
               <label htmlFor="name" className="space-y-2 sm:col-span-1">
-                <span className="text-sm font-medium text-white">Imię i nazwisko</span>
+                <span className="text-sm font-medium text-white">{t('contact.form.name.label')}</span>
                 <Input
                   id="name"
                   name="name"
-                  placeholder="Jak się nazywasz?"
+                  placeholder={t('contact.form.name.placeholder')}
                   required
                   className="bg-white/5 text-white placeholder:text-white/50"
                 />
               </label>
               <label htmlFor="email" className="space-y-2 sm:col-span-1">
-                <span className="text-sm font-medium text-white">Adres e-mail</span>
+                <span className="text-sm font-medium text-white">{t('contact.form.email.label')}</span>
                 <Input
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="Napisz swój e-mail"
+                  placeholder={t('contact.form.email.placeholder')}
                   required
                   className="bg-white/5 text-white placeholder:text-white/50"
                 />
               </label>
               <label htmlFor="company" className="space-y-2 sm:col-span-2">
-                <span className="text-sm font-medium text-white">Firma (opcjonalnie)</span>
+                <span className="text-sm font-medium text-white">{t('contact.form.company.label')}</span>
                 <Input
                   id="company"
                   name="company"
-                  placeholder="Nazwa firmy lub projektu"
+                  placeholder={t('contact.form.company.placeholder')}
                   className="bg-white/5 text-white placeholder:text-white/50"
                 />
               </label>
@@ -87,13 +115,13 @@ function ContactForm({ className }: ContactFormProps) {
             <label htmlFor="message" className="space-y-2">
               <span className="flex items-center gap-2 text-sm font-medium text-white">
                 <MessageSquare className="h-4 w-4" />
-                Opisz swoje potrzeby
+                {t('contact.form.message.label')}
               </span>
               <Textarea
                 id="message"
                 name="message"
                 rows={6}
-                placeholder="Opisz krótko projekt, zakres prac lub oczekiwany termin."
+                placeholder={t('contact.form.message.placeholder')}
                 required
                 className="bg-white/5 text-white placeholder:text-white/50"
               />
@@ -101,10 +129,10 @@ function ContactForm({ className }: ContactFormProps) {
 
             <div className="flex flex-col gap-4 pt-6 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-xs text-white/60">
-                Klikając wyślij, potwierdzasz zgodę na kontakt i przetwarzanie danych zgodnie z polityką prywatności.
+                {t('contact.form.consent')}
               </p>
               <Button variant="light" size="lg" type="submit" className="whitespace-nowrap">
-                Wyślij wiadomość
+                {t('contact.form.submit')}
               </Button>
             </div>
           </form>

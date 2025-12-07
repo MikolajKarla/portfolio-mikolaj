@@ -7,11 +7,52 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const { t } = useLanguage();
+
+  const services = [
+    {
+      key: "design",
+      title: t("home.sections.design.title"),
+      body: t("home.sections.design.body"),
+      image: "/Section1MainPage.svg",
+      alt: t("home.sections.design.imageAlt"),
+      wrapperClass: "lg:gap-16 lg:px-12",
+      imageClass: "lg:max-w-[600px]",
+    },
+    {
+      key: "build",
+      title: t("home.sections.build.title"),
+      body: t("home.sections.build.body"),
+      image: "/Section2MainPage.svg",
+      alt: t("home.sections.build.imageAlt"),
+      wrapperClass: "lg:gap-24 lg:px-28",
+      imageClass: "lg:max-w-[600px]",
+    },
+    {
+      key: "seo",
+      title: t("home.sections.seo.title"),
+      body: t("home.sections.seo.body"),
+      image: "/Section3MainPage.svg",
+      alt: t("home.sections.seo.imageAlt"),
+      wrapperClass: "lg:gap-24 lg:px-28",
+      imageClass: "lg:max-w-[900px]",
+    },
+    {
+      key: "support",
+      title: t("home.sections.support.title"),
+      body: t("home.sections.support.body"),
+      image: "/Section4MainPage.svg",
+      alt: t("home.sections.support.imageAlt"),
+      wrapperClass: "lg:gap-24 lg:px-28",
+      imageClass: "lg:max-w-[600px]",
+    },
+  ];
 
   useGSAP(
     () => {
@@ -75,12 +116,10 @@ export default function Home() {
       <section className="flex w-full max-w-5/6  h-2/3 flex-col-reverse items-center justify-between gap-12  py-16 sm:py-24 lg:flex-row lg:gap-16 lg:py-32">
         <div className="left w-full text-center font-light lg:w-2/3 lg:text-left">
           <h1 className="text-3xl font-medium space-mono sm:text-4xl lg:text-5xl ">
-            Nowoczesne aplikacje, sklepy i strony internetowe dla twojego
-            biznesu.
+            {t("home.hero.title")}
           </h1>
           <h3 className="lg:text-2xl pt-8 text-base text-neutral-500 pr-10 sm:text-lg">
-            Budujemy cyfrowe narzędzia , które faktycznie realizują Twoje cele
-            biznesowe. Stawiam na nowoczesny design i czysty kod.
+            {t("home.hero.subtitle")}
           </h3>
           <div className="btn-group mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:items-start lg:justify-start">
             <Button
@@ -88,7 +127,7 @@ export default function Home() {
               variant="dark"
               className="bg-primary text-primary-foreground hover:bg-primary/90 text-white"
             >
-              Omówmy Twój Projekt
+              {t("home.hero.cta.primary")}
               <ArrowRight className="ml-2 h-6 w-6" />
             </Button>
 
@@ -97,14 +136,14 @@ export default function Home() {
               variant="light"
               className="border-gray-300 text-foreground hover:bg-gray-100"
             >
-              Zobacz Case Studies
+              {t("home.hero.cta.secondary")}
             </Button>
           </div>
         </div>
         <div className="right flex w-full justify-center lg:w-1/2">
           <img
             src="/HeroPhoto.png"
-            alt="Hero"
+            alt={t("home.hero.imageAlt")}
             className="h-auto w-full max-w-xs sm:max-w-sm lg:max-w-[660px]"
             loading="lazy"
           />
@@ -112,121 +151,71 @@ export default function Home() {
         </div>
       </section>
       {/* #TODO: dodac tutaj animacje tekstu i pb */}
-        <h2 className="px-2 text-center text-2xl h1 lg:text-5xl sm:text-3xl">Czym się zajmujemy?</h2>  
+        <h2 className="px-2 text-center text-2xl h1 lg:text-5xl sm:text-3xl">{t("home.whatWeDo.heading")}</h2>  
       <div className="w-full overflow-hidden">
       <section
         ref={containerRef}
         className="horizontal relative flex flex-row gap-12 overflow-hidden py-12 sm:py-16 lg:items-center h-screen lg:flex-row lg:gap-0 lg:py-0"
       >
-          {/* Entry 1 */}
-          <div className="entry flex w-full flex-shrink-0 flex-col items-center justify-center gap-10 px-6 text-center lg:w-screen lg:flex-row lg:items-center  lg:text-left">
-            <div className="meta  w-full space-y-14 text-center lg:w-1/2">
-              <h2 className="text-3xl  grotesk sm:text-4xl lg:text-5xl">Strategic Design <br /> (UI/UX)</h2>
-              <p className="text-base leading-relaxed text-neutral-600  sm:text-lg lg:px-12 lg:text-2xl lg:leading-9">
-                Tworzę nowoczesne i intuicyjne projekty graficzne. <b>Strona musi wyglądać świetnie</b>, ale przede wszystkim musi być prosta w obsłudze i skutecznie prowadzić klienta do celu.
-              </p>
+          {services.map((service) => (
+            <div
+              key={service.key}
+              className={`entry flex w-full flex-shrink-0 flex-col items-center justify-center gap-10 px-6 text-center lg:w-screen lg:flex-row lg:items-center lg:text-left ${service.wrapperClass}`}
+            >
+              <div className="meta w-full space-y-14 text-center lg:w-1/2">
+                <h2 className="text-3xl grotesk sm:text-4xl lg:text-5xl">
+                  {service.title}
+                </h2>
+                <p className="text-base leading-relaxed text-neutral-600 sm:text-lg lg:px-12 lg:text-2xl lg:leading-9">
+                  {service.body}
+                </p>
+              </div>
+              <div className="media flex w-full justify-center lg:w-1/2">
+                <img
+                  src={service.image}
+                  alt={service.alt}
+                  className={`h-auto w-full max-w-md sm:max-w-xl ${service.imageClass}`}
+                  loading="lazy"
+                />
+              </div>
             </div>
-            <div className="media flex w-full justify-center lg:w-1/2">
-              <img
-                src="/Section1MainPage.svg"
-                alt="Strony Internetowe"
-                className="h-auto w-full max-w-md sm:max-w-xl lg:max-w-[600px]"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          {/* Entry 2 */}
-          <div className="entry flex w-full flex-shrink-0 flex-col items-center justify-center gap-10 px-6 text-center lg:w-screen lg:flex-row lg:items-center lg:gap-24 lg:px-28 lg:text-left">
-            <div className="meta w-full space-y-14 text-center lg:w-1/2">
-              <h2 className="text-3xl grotesk sm:text-4xl lg:text-5xl">Strony, Aplikacje, Sklepy</h2>
-              <p className="text-base leading-relaxed text-neutral-600 sm:text-lg lg:px-12 lg:text-2xl lg:leading-9">
-                Realizuję szeroki zakres projektów: od szybkich stron <b>WordPress</b>, przez zaawansowane <b>aplikacje internetowe</b>, aż po <b>wydajne sklepy e-commerce</b>.
-              </p>
-            </div>
-            <div className="media flex w-full justify-center lg:w-1/2">
-              <img
-                src="/Section2MainPage.svg"
-                alt="Aplikacje Webowe"
-                className="h-auto w-full max-w-md sm:max-w-xl lg:max-w-[600px]"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          {/* Entry 3 */}
-          <div className="entry flex w-full flex-shrink-0 flex-col items-center justify-center gap-10 px-6 text-center lg:w-screen lg:flex-row lg:items-center lg:gap-24 lg:px-28 lg:text-left">
-            <div className="meta w-full space-y-14 text-center lg:w-1/2">
-              <h2 className="text-3xl grotesk sm:text-4xl l lg:text-5xl">SEO Techniczne</h2>
-              <p className="text-base leading-relaxed text-neutral-600 sm:text-lg lg:px-12 lg:text-2xl lg:leading-9">
-                Upewniam się, że Twój projekt jest od podstaw zoptymalizowany pod kątem wyszukiwarek (Google). To czysty kod, szybkie ładowanie i struktura, którą Google pokocha oraz baza do późniejszych działań reklamowych              </p>
-            </div>
-            <div className="media flex w-full justify-center lg:w-1/2">
-              <img
-                src="/Section3MainPage.svg"
-                alt="E-commerce"
-                className="h-auto w-full max-w-md sm:max-w-xl lg:max-w-[900px]"
-                loading="lazy"
-              />
-            </div>
-          </div>
-
-          {/* Entry 4 */}
-          <div className="entry flex w-full flex-shrink-0 flex-col items-center justify-center gap-10 px-6 text-center lg:w-screen lg:flex-row lg:items-center lg:gap-24 lg:px-28 lg:text-left">
-            <div className="meta w-full space-y-14 text-center lg:w-1/2">
-              <h2 className="text-3xl grotesk sm:text-4xl lg:text-5xl">Wsparcie i Poprawki</h2>
-              <p className="text-base leading-relaxed text-neutral-600 sm:text-lg lg:px-12 lg:text-2xl lg:leading-9">
-                Potrzebujesz <b>szybkich poprawek na istniejącej stronie</b> lub wdrożenia nowej funkcjonalności? Pomagam utrzymać i rozwijać Twój cyfrowy projekt.
-              </p>
-            </div>
-            <div className="media flex w-full justify-center lg:w-1/2">
-              <img
-                src="/Section4MainPage.svg"
-                alt="Automatyzacja"
-                className="h-auto w-full max-w-md sm:max-w-xl lg:max-w-[600px]"
-                loading="lazy"
-              />
-            </div>
-          </div>
+          ))}
       </section>
       </div>
       
 
-      <section className="spotlight relative content-center overflow-hidden ">
-        <section className="case-studies  " >
-        <img className="bg h-50 w-50" src="Logo.svg" alt="logo" />
-        </section>
+      <section className="w-full h-[100vh] bg-img-logo flex justify-center items-center">
+        <div className="w-1/3 p-6 items-center gap-6 text-center flex flex-col rounded-3xl light-gradient-bg ">
+        <h3 className="text-2xl grotesk">{t("home.cta.heading")}</h3>
+        <span className="px-10">{t("home.cta.body")}</span>
+        <a target="_blank" href="/contact" className="-mb-10 ">
+          <Button 
+              size="lg"
+              variant="dark"
+              className="bg-primarytext-primary-foreground hover:bg-primary/90 text-white"
+              
+            >
+              {t("home.cta.button")}
+              <ArrowRight className="ml-2 h-6 w-6" />
+            </Button>
+            </a>
+        </div>
       </section>
 
       <section className="faq text-center  text-white py-20 text-xl bg-[var(--color-secondary)] min-w-full">
-        <span className="text-neutral-500 ">Przeczytaj najczęstsze pytania</span>
-        <h3 className="text-2xl">Masz obawy przed zaczęciem współpracy?</h3>
+        <span className="text-neutral-500 ">{t("home.faq.badge")}</span>
+        <h3 className="text-2xl">{t("home.faq.heading")}</h3>
         <div className="flex px-40 gap-40  py-25 ">
           <div className="left w-1/2 text-left">
-          <p>To normalne. Zebraliśmy i wyczerpująco odpowiedzieliśmy na wszystkie pytania, które najczęściej pojawiają się przed podjęciem decyzji o nowej inwestycji cyfrowej. <b> Nasza współpraca opiera się na pełnej transparentności.</b></p>
+          <p>{t("home.faq.body")}</p>
           </div>
           <div className="right w-1/2 text-left flex flex-col  gap-12">
-            <div className="icon-text flex text-3xl gap-6">
-              <div className="icon w-1/12">X</div>
-              <div className="text w-11/12">Gwarancję i wsparcie strony</div>
-            </div>
-            <div className="icon-text flex text-3xl gap-6">
-              <div className="icon w-1/12">X</div>
-              <div className="text w-11/12">Gwarancję i wsparcie strony</div>
-            </div>
-            <div className="icon-text flex text-3xl gap-6">
-              <div className="icon w-1/12">X</div>
-              <div className="text w-11/12">Gwarancję i wsparcie strony</div>
-            </div>
-            <div className="icon-text flex text-3xl gap-6">
-              <div className="icon w-1/12">X</div>
-              <div className="text w-11/12">Gwarancję i wsparcie strony</div>
-            </div>
-            <div className="icon-text flex text-3xl gap-6">
-              <div className="icon w-1/12">X</div>
-              <div className="text w-11/12">Gwarancję i wsparcie strony</div>
-            </div>
-            
+            {Array.from({ length: 5 }).map((_, index) => (
+              <div className="icon-text flex text-3xl gap-6" key={`faq-item-${index}`}>
+                <div className="icon w-1/12">X</div>
+                <div className="text w-11/12">{t("home.faq.item")}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
