@@ -119,8 +119,8 @@ useGSAP(() => {
   }, []);
   return (
       <div className='relative'>
-      <div className="min-h-screen flex flex-col justify-center items-center gap-12 px-12 text-center lg:px-0 pb-32">
-        <div className=' flex flex-col'>
+      <div className="min-h-screen flex flex-col justify-center items-center gap-12 px-12 text-center lg:px-0 scroll">
+        <div className='flex flex-col pt-16'>
         <h1 className='text-5xl font-black space-mono'>{t('websites.hero.heading1')}</h1>
         <h1 ref={offerRef} className='text-5xl font-bold space-mono text-shadow-xl bg-gradient-to-t from-[#B98F5F] from-10% to-[#FEDFBD] to-60%  bg-clip-text text-transparent py-6'>{offer[offerCounter]}</h1>
         <h1 className='text-5xl font-bold space-mono'>{t('websites.hero.heading2')}</h1>
