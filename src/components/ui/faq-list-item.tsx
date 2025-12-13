@@ -8,14 +8,12 @@ type FaqListItemProps = {
 }
 
 function FaqListItem({ title,id, answer }: FaqListItemProps) {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isClicked, setClicked] = useState(0)
-  const toggleOpen = (btn:any) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [isClicked, setClicked] = useState<number>(0)
+  const toggleOpen = (btn: number) => {
     setIsOpen(!isOpen)
     setClicked(btn)
     console.log(btn,isOpen);
-    
-
   }
   useGSAP(() => {
     const iconLines = document.querySelectorAll('.faq-icon-line');
