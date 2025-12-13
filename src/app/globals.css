@@ -140,15 +140,3 @@ body {
 .faq-icon--open .faq-icon-line {
   background-color: rgba(255, 255, 255, 0.8);
 }
-.faq-answer {
-  max-height: 0;
-  opacity: 0;
-  transform: translateY(-6px);
-  transition: max-height 0.35s ease, opacity 0.35s ease, transform 0.35s ease;
-}
-
-.faq-answer--open {
-  max-height: 200px;
-  opacity: 1;
-  transform: translateY(0);
-}
