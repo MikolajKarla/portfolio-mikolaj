@@ -32,14 +32,17 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme') as Theme | null
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    
-    if (savedTheme) {
-      setThemeState(savedTheme)
-    } else if (prefersDark) {
-      setThemeState('dark')
+
+    const nextTheme: Theme = savedTheme ? savedTheme : prefersDark ? 'dark' : 'light'
+
+    const timeoutId = window.setTimeout(() => {
+      setThemeState(nextTheme)
+      setMounted(true)
+    }, 0)
+
+    return () => {
+      window.clearTimeout(timeoutId)
     }
-    
-    setMounted(true)
   }, [])
 
   // Zastosuj motyw do dokumentu
