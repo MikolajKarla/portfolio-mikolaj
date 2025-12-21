@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     }
     const replyTo = email && /.+@.+/.test(email) ? email : undefined
 
-    const toAddress = process.env.EMAIL_TO || 'mikolajkarla@gmail.com'
+      const toAddress = 'km-designs@contact.pl'
 
     const emailHtml = await render(
       EmailTemplate({

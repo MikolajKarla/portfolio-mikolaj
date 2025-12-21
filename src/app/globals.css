@@ -114,6 +114,23 @@ body {
   background-repeat: no-repeat;
   background-size: 60%;
 }
+@media screen and (max-width: 768px) {
+  .bg-img-logo{
+    background-size: 90%;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .bg-img-logo{
+    background-size: 75%;
+  }
+} 
+@media screen and (min-width: 1025px) and (max-width: 1280px) {
+  .bg-img-logo{
+    background-size: 65%;
+  }
+}
+
+
 .light-gradient-bg {
   background: linear-gradient(135deg, #EED4B6 0%, #ffffff 60%);
 }

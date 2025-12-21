@@ -82,7 +82,8 @@ export default function Home() {
           ease: "none",
           scrollTrigger: {
             trigger: containerEl,
-            start: "center center",
+            start: "top top",
+            end:"bottom bottom",
             end: () => `+=${window.innerWidth*totalSections}`,
             scrub: 0.5,
             pin: true,
@@ -99,9 +100,11 @@ export default function Home() {
     ScrollTrigger.create({
       trigger:".case-studies",
       start:"center center",
-      end:`+${window.innerHeight * 6}`,
+      end:`+${window.innerWidth * 4}`,
       pin:true,
       pinSpacing:true, 
+      scrub:1,
+      snap:0.5,
       onUpdate:(self)=>{
         const progress = self.progress
         console.log(progress);
@@ -151,12 +154,11 @@ export default function Home() {
           <div />
         </div>
       </section>
-      {/* #TODO: dodac tutaj animacje tekstu i pb */}
         <h2 className="px-2 text-center text-2xl h1 lg:text-5xl sm:text-3xl">{t("home.whatWeDo.heading")}</h2>  
       <div className="w-full overflow-hidden">
       <section
         ref={containerRef}
-        className="horizontal relative flex flex-row gap-12 overflow-hidden py-12 sm:py-16 lg:items-center h-screen lg:flex-row lg:gap-0 lg:py-0"
+        className="horizontal relative flex flex-row   overflow-hidden py-12 sm:py-16 lg:items-center h-screen lg:flex-row lg:gap-0 lg:py-0"
       >
           {services.map((service) => (
             <div
@@ -185,8 +187,8 @@ export default function Home() {
       </div>
       
 
-      <section className="w-full h-[100vh] bg-img-logo flex justify-center items-center">
-        <div className="w-1/3 p-6 items-center gap-6 text-center flex flex-col rounded-3xl light-gradient-bg ">
+      <section className="w-full h-[60vh] md:h-[70vh] lg:h-[100vh]  bg-img-logo flex justify-center items-center">
+        <div className="w-3/4 p-6 items-center gap-6 text-center border-3 border-white flex flex-col xl:1/3 lg:w-1/3 md:w-2/3 rounded-3xl light-gradient-bg ">
         <h3 className="text-2xl grotesk">{t("home.cta.heading")}</h3>
         <span className="px-10">{t("home.cta.body")}</span>
         <a target="_blank" href="/contact" className="-mb-10 ">
@@ -203,16 +205,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="faq text-center  text-white py-20 text-xl bg-[var(--color-secondary)] min-w-full">
-        <span className="text-neutral-500 ">{t("home.faq.badge")}</span>
+      <section className="faq text-center text-wrap  text-white py-20 text-xl bg-[var(--color-secondary)] min-w-full">
+        <span className="text-neutral-500  ">{t("home.faq.badge")}</span>
         <h3 className="text-2xl">{t("home.faq.heading")}</h3>
-        <div className="flex px-40 gap-20  py-25 ">
-          <div className="left w-1/2 text-left flex flex-col gap-6">
-          <p>{t("home.faq.body")}</p>
-          <p className="font-black">{t("home.faq.body2")}</p>
+        <div className="flex md:px-8 lg:px-16 px-4 gap-20 flex-col md:flex-row   py-25 ">
+          <div className="left w-full md:w-1/2  flex text-center md:text-left flex-col gap-6">
+          <p className="">{t("home.faq.body")}</p>
+          <p className="font-black ">{t("home.faq.body2")}</p>
 
           </div>
-          <div className="right w-1/2 text-left flex flex-col  gap-12">
+          <div className="right w-full md:w-1/2 text-left flex flex-col   gap-12">
             {Array.from({ length: 5 }).map((_, index) => (
               <FaqListItem key={`faq-item-${index}`} id={index} title={t(`home.faq.item-${index + 1}.question`)} answer={t(`home.faq.item-${index + 1}.answer`)} />
             ))}
