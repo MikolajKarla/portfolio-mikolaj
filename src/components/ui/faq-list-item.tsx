@@ -20,15 +20,15 @@ function FaqListItem({ title,id, answer }: FaqListItemProps) {
     const faqItems = document.querySelectorAll('.faq-answer');
 
     if (isOpen) {
-      gsap.to(iconLines[2 * isClicked], { duration: 0.1, y: -4 });
-      gsap.to(iconLines[2 * isClicked + 1], { duration: 0.1, y: 4 });
-      gsap.to(iconLines[2 * isClicked], { rotate: 45, duration: 0.3, delay: 0.5 });
-      gsap.to(iconLines[2 * isClicked + 1], { rotate: -45, duration: 0.3, delay: 0.5 });
+      gsap.to(iconLines[2 * isClicked], { duration: 0.05, y: -4 });
+      gsap.to(iconLines[2 * isClicked + 1], { duration: 0.05, y: 4 });
+      gsap.to(iconLines[2 * isClicked], { rotate: 45, duration: 0.1, delay: 0.3 });
+      gsap.to(iconLines[2 * isClicked + 1], { rotate: -45, duration: 0.1, delay: 0.3 });
     } else {
-      gsap.to(iconLines[2 * isClicked], { rotate: 0, duration: 0.3 });
-      gsap.to(iconLines[2 * isClicked + 1], { rotate: 0, duration: 0.3 });
-      gsap.to(iconLines[2 * isClicked], { duration: 0.1, y: 0, delay: 0.8 });
-      gsap.to(iconLines[2 * isClicked + 1], { duration: 0.1, y: 0, delay: 0.8 });
+      gsap.to(iconLines[2 * isClicked], { rotate: 0, duration: 0.15 });
+      gsap.to(iconLines[2 * isClicked + 1], { rotate: 0, duration: 0.15 });
+      gsap.to(iconLines[2 * isClicked], { duration: 0.1, y: 0, delay: 0.7 });
+      gsap.to(iconLines[2 * isClicked + 1], { duration: 0.1, y: 0, delay: 0.7 });
     }
 
     const answerEl = faqItems[id] as HTMLElement | undefined;
