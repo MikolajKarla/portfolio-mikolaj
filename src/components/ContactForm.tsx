@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useId, useState } from 'react'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
@@ -13,10 +13,21 @@ type ContactFormProps = {
 
 function ContactForm({ className }: ContactFormProps) {
   const { t } = useLanguage()
+
+  const formId = useId()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [alert, setAlert] = useState<null | { message: string; type: 'success' | 'error' }>(null)
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+
+    if (isSubmitting) return
+
     const form = e.currentTarget
     const formData = new FormData(form)
+
+    setIsSubmitting(true)
+    setAlert(null)
 
     try {
       const response = await fetch('/api/send', {
@@ -25,23 +36,27 @@ function ContactForm({ className }: ContactFormProps) {
       })
 
       if (response.ok) {
-        <Alert message="Wiadomość została wysłana pomyślnie!" type="success" />
+        setAlert({ message: t('contact.form.alert.success'), type: 'success' })
         form.reset()
       } else {
-        const data = await response.json()
-        if (data.error) {
-        <Alert message={`Błąd podczas wysyłania wiadomości: ${data.error}`} type="error" />
-        } else {
-        <Alert message="Wystąpił nieznany błąd podczas wysyłania wiadomości." type="error" />
-        }
+        const data = await response.json().catch(() => null)
+        const errorMessage = data?.error
+          ? String(data.error)
+          : t('contact.form.alert.unknownError')
+        setAlert({ message: `${t('contact.form.alert.errorPrefix')} ${errorMessage}`, type: 'error' })
       }
     } catch (error) {
-      <Alert message={`Błąd podczas wysyłania wiadomości: ${String(error)}`} type="error" />
+      setAlert({ message: `${t('contact.form.alert.errorPrefix')} ${String(error)}`, type: 'error' })
+    } finally {
+      setIsSubmitting(false)
     }
   }
   return (
     <div className={cn('relative flex h-full w-full flex-col overflow-hidden rounded-xl border-2 border-stone-300 lg:rounded-tl-3xl bg-[var(--color-secondary)] text-white shadow-2xl', className)}>
       <div className="relative flex  h-full flex-col gap-10 p-8 sm:p-10">
+        <div className="min-h-[44px]" aria-live="polite" aria-atomic="true">
+          {alert ? <Alert message={alert.message} type={alert.type} /> : null}
+        </div>
         <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[0.95fr,1.05fr] lg:items-start lg:gap-12">
           <div className="space-y-6">
             <div className="space-y-3">
@@ -60,7 +75,7 @@ function ContactForm({ className }: ContactFormProps) {
             <div className="space-y-4 text-sm text-white/70">
               <div className="flex items-center gap-3">
                 <PhoneCall className="h-5 w-5 text-[var(--color-accent)]" />
-                <a href="tel:+48575464064" className="transition hover:text-white">+48 575 464 064</a>
+                <a href="tel:+48731866536" className="transition hover:text-white">+48 731 866 536</a>
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-[var(--color-accent)]" />
@@ -76,9 +91,24 @@ function ContactForm({ className }: ContactFormProps) {
 
           <form
             onSubmit={handleSubmit}
-            
+
             className="space-y-6 rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg backdrop-blur"
           >
+            {/* Honeypot for basic spam protection (should stay empty) */}
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor={`${formId}-website`}>
+                Website
+              </label>
+              <input
+                id={`${formId}-website`}
+                name="website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                defaultValue=""
+              />
+            </div>
+
             <div className="grid gap-6 sm:grid-cols-2">
               <label htmlFor="name" className="space-y-2 sm:col-span-1">
                 <span className="text-sm font-medium text-white">{t('contact.form.name.label')}</span>
@@ -87,6 +117,8 @@ function ContactForm({ className }: ContactFormProps) {
                   name="name"
                   placeholder={t('contact.form.name.placeholder')}
                   required
+                  autoComplete="name"
+                  disabled={isSubmitting}
                   className="bg-white/5 text-white placeholder:text-white/50"
                 />
               </label>
@@ -98,6 +130,9 @@ function ContactForm({ className }: ContactFormProps) {
                   type="email"
                   placeholder={t('contact.form.email.placeholder')}
                   required
+                  inputMode="email"
+                  autoComplete="email"
+                  disabled={isSubmitting}
                   className="bg-white/5 text-white placeholder:text-white/50"
                 />
               </label>
@@ -107,6 +142,8 @@ function ContactForm({ className }: ContactFormProps) {
                   id="company"
                   name="company"
                   placeholder={t('contact.form.company.placeholder')}
+                  autoComplete="organization"
+                  disabled={isSubmitting}
                   className="bg-white/5 text-white placeholder:text-white/50"
                 />
               </label>
@@ -123,6 +160,8 @@ function ContactForm({ className }: ContactFormProps) {
                 rows={6}
                 placeholder={t('contact.form.message.placeholder')}
                 required
+                autoComplete="off"
+                disabled={isSubmitting}
                 className="bg-white/5 text-white placeholder:text-white/50"
               />
             </label>

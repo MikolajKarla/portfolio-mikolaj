@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Space_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "../components/ui/Header";
@@ -19,6 +19,11 @@ export const metadata: Metadata = {
   description: "Profesjonalna agencja cyfrowa specjalizująca się w tworzeniu stron internetowych, aplikacji webowych i automatyzacji procesów biznesowych.",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -26,12 +31,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <title>KFwork - Agencja Cyfrowa</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="description" content="Profesjonalna agencja cyfrowa specjalizująca się w tworzeniu stron internetowych, aplikacji webowych i automatyzacji procesów biznesowych." />
-        <link rel="icon" href="/favicon.ico" />
-      </head>
       <body className={`${grotesk.variable} ${mono.variable} ${poppins.variable} antialiased`}>
         <LanguageProvider>
           <ThemeProvider>

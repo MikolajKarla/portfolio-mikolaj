@@ -226,6 +226,9 @@ const translations = {
     'contact.form.message.placeholder': 'Opisz krótko projekt, zakres prac lub oczekiwany termin.',
     'contact.form.consent': 'Klikając wyślij, potwierdzasz zgodę na kontakt i przetwarzanie danych zgodnie z polityką prywatności.',
     'contact.form.submit': 'Wyślij wiadomość',
+    'contact.form.alert.success': 'Wiadomość została wysłana pomyślnie!',
+    'contact.form.alert.unknownError': 'Wystąpił nieznany błąd podczas wysyłania wiadomości.',
+    'contact.form.alert.errorPrefix': 'Błąd podczas wysyłania wiadomości:',
   },
   en: {
     // Navigation
@@ -441,6 +444,9 @@ const translations = {
     'contact.form.message.placeholder': 'Describe the project, scope or ideal timeline.',
     'contact.form.consent': 'By clicking send you agree to be contacted and have your data processed according to the privacy policy.',
     'contact.form.submit': 'Send message',
+    'contact.form.alert.success': 'Your message has been sent successfully!',
+    'contact.form.alert.unknownError': 'An unknown error occurred while sending the message.',
+    'contact.form.alert.errorPrefix': 'Error while sending the message:',
   }
 }
 

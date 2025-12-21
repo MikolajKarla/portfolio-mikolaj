@@ -83,7 +83,6 @@ export default function Home() {
           scrollTrigger: {
             trigger: containerEl,
             start: "top top",
-            end:"bottom bottom",
             end: () => `+=${window.innerWidth*totalSections}`,
             scrub: 0.5,
             pin: true,
@@ -163,7 +162,7 @@ export default function Home() {
           {services.map((service) => (
             <div
               key={service.key}
-              className={`entry flex w-full flex-shrink-0 flex-col items-center justify-center gap-10 px-6 text-center lg:w-screen lg:flex-row lg:items-center lg:text-left ${service.wrapperClass}`}
+              className={`entry flex w-full flex-shrink-0 flex-col items-top justify-center gap-10 px-6 text-center lg:w-screen lg:flex-row lg:items-center lg:text-left ${service.wrapperClass}`}
             >
               <div className="meta w-full space-y-14 text-center lg:w-1/2">
                 <h2 className="text-3xl grotesk sm:text-4xl lg:text-5xl">
@@ -188,7 +187,7 @@ export default function Home() {
       
 
       <section className="w-full h-[60vh] md:h-[70vh] lg:h-[100vh]  bg-img-logo flex justify-center items-center">
-        <div className="w-3/4 p-6 items-center gap-6 text-center border-3 border-white flex flex-col xl:1/3 lg:w-1/3 md:w-2/3 rounded-3xl light-gradient-bg ">
+        <div className="w-3/4 p-6 items-center gap-6 text-center border-3 border-stone-600 flex flex-col xl:1/3 lg:w-1/3 md:w-2/3 rounded-3xl light-gradient-bg ">
         <h3 className="text-2xl grotesk">{t("home.cta.heading")}</h3>
         <span className="px-10">{t("home.cta.body")}</span>
         <a target="_blank" href="/contact" className="-mb-10 ">
