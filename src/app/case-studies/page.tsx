@@ -1,10 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -230,11 +230,13 @@ export default function CaseStudiesPage() {
 								</div>
 							</div>
 							<div className="flex w-full items-center justify-center lg:w-1/2">
-								<img
+								<Image
 									src={study.image}
 									alt={study.client}
 									className="h-auto w-full max-w-xl"
-									loading="lazy"
+									width={1200}
+									height={800}
+									sizes="(min-width: 1024px) 40vw, 100vw"
 								/>
 							</div>
 						</article>

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { Button } from "@/components/ui/button";
@@ -9,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import FaqListItem from "@/components/ui/faq-list-item";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -144,11 +144,14 @@ export default function Home() {
           </div>
         </div>
         <div className="right flex w-full justify-center lg:w-1/2">
-          <img
+          <Image
             src="/HeroPhoto.png"
             alt={t("home.hero.imageAlt")}
             className="h-auto w-full max-w-xs sm:max-w-sm lg:max-w-[660px]"
-            loading="lazy"
+            width={1320}
+            height={1320}
+            sizes="(min-width: 1024px) 50vw, 90vw"
+            priority
           />
           <div />
         </div>
@@ -173,11 +176,13 @@ export default function Home() {
                 </p>
               </div>
               <div className="media flex w-full justify-center lg:w-1/2">
-                <img
+                <Image
                   src={service.image}
                   alt={service.alt}
                   className={`h-auto w-full max-w-md sm:max-w-xl ${service.imageClass}`}
-                  loading="lazy"
+                  width={1400}
+                  height={900}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                 />
               </div>
             </div>
