@@ -15,7 +15,7 @@ function Footer() {
             <h4 className="text-xl font-semibold md:text-2xl">{t('footer.contact.headingQuestion')}</h4>
             <a
               href={`mailto:${email}`}
-              className="text-sm text-[var(--color-accent-dark)] transition hover:text-[var(--color-accent-light)] hover:underline md:text-base"
+              className="text-sm text-[var(--color-accent)] transition hover:text-white hover:underline md:text-base"
             >
               {email}
             </a>
@@ -25,7 +25,7 @@ function Footer() {
             <h4 className="text-xl font-semibold md:text-2xl">{t('footer.contact.headingDiscuss')}</h4>
             <a
               href={`tel:+48731866536`}
-              className="text-sm text-[var(--color-accent-dark)] transition hover:text-[var(--color-accent-light)] hover:underline md:text-base"
+              className="text-sm text-[var(--color-accent)] transition hover:text-white hover:underline md:text-base"
             >
               +48 731 866 536
             </a>
@@ -35,19 +35,19 @@ function Footer() {
         <nav className="flex flex-1 flex-col gap-3 sm:max-w-sm md:items-start">
           <h4 className="text-xl font-semibold md:text-2xl">{t('footer.nav.heading')}</h4>
           <a
-            href={`/`} className="text-sm text-[var(--color-accent-dark)] transition hover:text-[var(--color-accent-light)] hover:underline md:text-base">
+            href={`/`} className="text-sm text-[var(--color-accent)] transition hover:text-white hover:underline md:text-base">
             {t('footer.nav.about')}
           </a>
           <a
-            href={`/websites`} className="text-sm text-[var(--color-accent-dark)] transition hover:text-[var(--color-accent-light)] hover:underline md:text-base">
+            href={`/websites`} className="text-sm text-[var(--color-accent)] transition hover:text-white hover:underline md:text-base">
             {t('nav.services')}
           </a>
           <a
-            href={`/case-studies`} className="text-sm text-[var(--color-accent-dark)] transition hover:text-[var(--color-accent-light)] hover:underline md:text-base">
+            href={`/case-studies`} className="text-sm text-[var(--color-accent)] transition hover:text-white hover:underline md:text-base">
             {t('nav.portfolio')}
           </a>
           <a
-            href={`/contact`} className="text-sm text-[var(--color-accent-dark)] transition hover:text-[var(--color-accent-light)] hover:underline md:text-base">
+            href={`/contact`} className="text-sm text-[var(--color-accent)] transition hover:text-white hover:underline md:text-base">
             {t('nav.contact')}
           </a>
         </nav>
@@ -56,11 +56,11 @@ function Footer() {
           <div className='flex flex-col gap-3'>
             <h4 className="text-xl font-semibold md:text-2xl">{t('footer.policy.heading')}</h4>
             <a
-              href={`/privacy-policy`} className="text-sm text-[var(--color-accent-dark)] transition hover:text-[var(--color-accent-light)] hover:underline md:text-base">
+              href={`/privacy-policy`} className="text-sm text-[var(--color-accent)] transition hover:text-white hover:underline md:text-base">
               {t('footer.policy.privacy')}
             </a>
             <a
-              href={`/privacy-policy#cookies`} className="text-sm text-[var(--color-accent-dark)] transition hover:text-[var(--color-accent-light)] hover:underline md:text-base">
+              href={`/privacy-policy#cookies`} className="text-sm text-[var(--color-accent)] transition hover:text-white hover:underline md:text-base">
               {t('footer.policy.cookies')}
             </a>
           </div>

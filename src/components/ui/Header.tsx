@@ -42,7 +42,7 @@ function Header() {
     const navLinks = [
         { href: '/', label: t('nav.about') },
         { href: '/websites', label: t('nav.services') },
-        { href: '/case-studies', label: t('nav.portfolio') },
+        // { href: '/case-studies', label: t('nav.portfolio') },
         { href: '/contact', label: t('nav.contact') }
     ]
 
@@ -95,26 +95,30 @@ function Header() {
             `}>
                 <div className="flex flex-col gap-6 pb-4">
                     {/* Navigation Links */}
-                    <div className="grid grid-cols-2 gap-2 mb-4">
+                    <ul className="grid grid-cols-2 gap-2 mb-4">
                         {navLinks.map((link) => (
-                            <NavigationMenuItem key={link.href} className='list-none'>
-                                <NavigationMenuLink 
-                                    href={link.href}
-                                    className='block text-center py-2 px-4 rounded-lg font-medium transition-all duration-200 text-foreground hover:bg-accent/50'
-                                >
-                                    {link.label}
-                                </NavigationMenuLink>
+                            <NavigationMenuItem asChild key={link.href}>
+                                <li className='list-none'>
+                                    <NavigationMenuLink 
+                                        href={link.href}
+                                        className='block text-center py-2 px-4 rounded-lg font-medium transition-all duration-200 text-foreground hover:bg-accent/50'
+                                    >
+                                        {link.label}
+                                    </NavigationMenuLink>
+                                </li>
                             </NavigationMenuItem>
                         ))}
-                    </div>
+                    </ul>
                     
                     {/* CTA Button */}
-                    <NavigationMenuItem className='list-none'>
-                        <NavigationMenuLink href="/contact" className='block'>
-                            <Button variant="light" size="default" className="w-full">
-                                {t('hero.cta.primary')}
-                            </Button>
-                        </NavigationMenuLink>
+                    <NavigationMenuItem asChild>
+                        <li className='list-none'>
+                            <NavigationMenuLink href="/contact" className='block'>
+                                <Button variant="light" size="default" className="w-full">
+                                    {t('hero.cta.primary')}
+                                </Button>
+                            </NavigationMenuLink>
+                        </li>
                     </NavigationMenuItem>
                 </div>
             </div>

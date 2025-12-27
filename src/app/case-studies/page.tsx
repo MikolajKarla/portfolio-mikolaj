@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import {useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -234,9 +234,10 @@ export default function CaseStudiesPage() {
 									src={study.image}
 									alt={study.client}
 									className="h-auto w-full max-w-xl"
-									width={1200}
-									height={800}
-									sizes="(min-width: 1024px) 40vw, 100vw"
+									width={960}
+									height={720}
+									loading="lazy"
+									sizes="(min-width: 1024px) 480px, 90vw"
 								/>
 							</div>
 						</article>
@@ -255,7 +256,14 @@ export default function CaseStudiesPage() {
 				</div>
 				<div className="grid gap-6 lg:grid-cols-4">
 					{processSteps.map((step) => (
-						<div key={step.title} className="box rounded-[32px] px-6 py-10 text-left text-white">
+						<div
+							key={step.title}
+							className="rounded-[32px] px-6 py-10 text-left text-white shadow-[5px_5px_40px_rgba(0,0,0,0.5)]"
+							style={{
+								backgroundImage:
+									"linear-gradient(-20deg,#ebebeb -80%,#000000 35%,#000000 60%,#ebebeb 180%)",
+							}}
+						>
 							<h3 className="text-2xl font-semibold space-mono">{step.title}</h3>
 							<p className="mt-4 text-base font-light text-neutral-200">
 								{step.description}

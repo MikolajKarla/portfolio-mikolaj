@@ -1,7 +1,8 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Target } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -70,7 +71,6 @@ export default function Home() {
         return;
       }
 
-      const matchMedia = gsap.matchMedia();
 
         const totalSections = sections.length;
         if (totalSections <= 1) {
@@ -93,26 +93,7 @@ export default function Home() {
       });
 
   
-  useGSAP(
-    ()=>{
-    const img = document.querySelector(".bg")
-    ScrollTrigger.create({
-      trigger:".case-studies",
-      start:"center center",
-      end:`+${window.innerWidth * 4}`,
-      pin:true,
-      pinSpacing:true, 
-      scrub:1,
-      snap:0.5,
-      onUpdate:(self)=>{
-        const progress = self.progress
-        console.log(progress);
 
-      }
-    })
-  }
-  
-  )
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center gap-16 overflow-x-hidden md:gap-20 lg:w-full lg:px-0">
@@ -121,9 +102,9 @@ export default function Home() {
           <h1 className="text-3xl font-medium space-mono sm:text-4xl lg:text-5xl ">
             {t("home.hero.title")}
           </h1>
-          <h3 className="lg:text-2xl pt-8 text-base text-neutral-500 pr-10 sm:text-lg">
+          <h2 className="lg:text-2xl pt-8 text-base text-neutral-700 pr-10 sm:text-lg">
             {t("home.hero.subtitle")}
-          </h3>
+          </h2>
           <div className="btn-group mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:items-start lg:justify-start">
             <Button
               size="lg"
@@ -148,10 +129,11 @@ export default function Home() {
             src="/HeroPhoto.png"
             alt={t("home.hero.imageAlt")}
             className="h-auto w-full max-w-xs sm:max-w-sm lg:max-w-[660px]"
-            width={1320}
-            height={1320}
-            sizes="(min-width: 1024px) 50vw, 90vw"
+            width={660}
+            height={660}
             priority
+            fetchPriority="high"
+            sizes="(min-width: 1024px) 660px, (min-width: 640px) 384px, 240px"
           />
           <div />
         </div>
@@ -180,9 +162,10 @@ export default function Home() {
                   src={service.image}
                   alt={service.alt}
                   className={`h-auto w-full max-w-md sm:max-w-xl ${service.imageClass}`}
-                  width={1400}
+                  width={900}
                   height={900}
-                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  loading="lazy"
+                  sizes="(min-width: 1024px) 50vw, (min-width: 768px) 60vw, 90vw"
                 />
               </div>
             </div>
@@ -209,8 +192,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="faq text-center text-wrap  text-white py-20 text-xl bg-[var(--color-secondary)] min-w-full">
-        <span className="text-neutral-500  ">{t("home.faq.badge")}</span>
+      <section className="faq text-center  text-white py-20 text-xl bg-[var(--color-secondary)] min-w-full">
+        <span className="font-semibold uppercase tracking-[0.3em] text-[var(--color-primary)]">
+          {t("home.faq.badge")}
+        </span>
         <h3 className="text-2xl">{t("home.faq.heading")}</h3>
         <div className="flex md:px-8 lg:px-16 px-4 gap-20 flex-col md:flex-row   py-25 ">
           <div className="left w-full md:w-1/2  flex text-center md:text-left flex-col gap-6">

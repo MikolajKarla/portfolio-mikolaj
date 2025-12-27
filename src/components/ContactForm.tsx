@@ -60,7 +60,7 @@ function ContactForm({ className }: ContactFormProps) {
         <div className="flex flex-col gap-10 lg:grid lg:grid-cols-[0.95fr,1.05fr] lg:items-start lg:gap-12">
           <div className="space-y-6">
             <div className="space-y-3">
-              <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-accent-dark)]">
+              <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-accent)]">
                 <Mail className="h-4 w-4" />
                 {t('contact.form.badge')}
               </span>
