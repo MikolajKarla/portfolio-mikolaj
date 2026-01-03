@@ -5,7 +5,7 @@ type AlertProps = { message: string, type?: 'success' | 'error' | 'info' }
 const Alert: React.FC<AlertProps> = ({ message, type = 'info' }) => {
   if (type === 'success') {
     return (
-    <div className='fixed bottom-16 right-6'>
+    <div className='fixed bottom-16 z-50 right-6'>
         <div className="p-2 bg-green-800 items-center text-green-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
           <span className="flex rounded-full bg-green-500 uppercase px-2 py-1 text-xs font-bold mr-3">Success</span>
           <span className="font-semibold mr-2 text-left flex-auto">{message}</span>
@@ -17,7 +17,7 @@ const Alert: React.FC<AlertProps> = ({ message, type = 'info' }) => {
 
   if (type === 'error') {
     return (
-        <div className='fixed bottom-16 right-6'>
+        <div className='fixed bottom-16 z-50 right-6'>
         <div className="p-2 bg-red-800 items-center text-red-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
           <span className="flex rounded-full bg-red-500 uppercase px-2 py-1 text-xs font-bold mr-3">Error</span>
           <span className="font-semibold mr-2 text-left flex-auto">{message}</span>
@@ -28,7 +28,7 @@ const Alert: React.FC<AlertProps> = ({ message, type = 'info' }) => {
   }
 
   return (
-    <div className='fixed bottom-16 right-6'>
+    <div className='fixed bottom-16 z-50 right-6'>
       <div className="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
         <span className="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">New</span>
         <span className="font-semibold mr-2 text-left flex-auto">{message}</span>
