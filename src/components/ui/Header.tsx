@@ -42,7 +42,7 @@ function Header() {
     const navLinks = [
         { href: '/', label: t('nav.about') },
         { href: '/websites', label: t('nav.services') },
-        // { href: '/case-studies', label: t('nav.portfolio') },
+        { href: '/case-studies', label: t('nav.portfolio') },
         { href: '/contact', label: t('nav.contact') }
     ]
 

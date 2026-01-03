@@ -1,6 +1,6 @@
 "use client";
 
-import {useRef, useState } from "react";
+import {useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -89,7 +89,7 @@ export default function CaseStudiesPage() {
 	const highlightRef = useRef<HTMLHeadingElement | null>(null);
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const metricsRef = useRef<HTMLDivElement | null>(null);
-	const [highlightIndex, setHighlightIndex] = useState(0);
+	const highlightIndex = 0;
 
 
 

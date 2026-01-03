@@ -219,28 +219,14 @@ export default function Page() {
                 </li>
               </ul>
             </div>
-
           </div>
-          <div className="case-content w-1/2">
-            <Image
-              src="/RezydencjaMockup.png"
-              alt={t('websites.caseOne.imageAlt')}
-              width={900}
-              height={700}
-              className="h-auto w-full"
-              loading="lazy"
-              sizes="(min-width: 1024px) 45vw, 90vw"
-            />
-          </div>
-
         </div>
-
       </div>
 
       <div className="spacer hidden lg:block">
         <div className='h-1/2 border px-30'></div>
       </div>
-
+    
       <div className="cases2 px-6 py-12 min-h-screen sm:px-12 lg:px-30 lg:py-0 lg:h-[100vh]">
         <div className="case flex flex-col gap-10 lg:flex-row lg:gap-0">
           <div className="case-content w-full lg:w-1/2">
@@ -251,19 +237,6 @@ export default function Page() {
               width={1400}
               height={900}
               sizes="(min-width: 1024px) 50vw, 100vw"
-            />
-
-      <div className="cases2 px-30 h-[100vh]">
-        <div className="case flex">
-   <div className="case-content w-1/2">
-            <Image
-              src="/AgataMockup.png"
-              alt={t('websites.caseTwo.imageAlt')}
-              width={900}
-              height={700}
-              className="h-auto w-full"
-              loading="lazy"
-              sizes="(min-width: 1024px) 45vw, 90vw"
             />
           </div>
           <div className="case-content w-full flex items-center justify-center flex-col px-0 sm:px-6 lg:w-1/2 lg:px-12">
@@ -296,12 +269,9 @@ export default function Page() {
                 </li>
               </ul>
             </div>
-
           </div>
-
         </div>
-
       </div>
     </div>
-  )
+  );
 }

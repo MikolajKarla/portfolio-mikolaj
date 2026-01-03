@@ -9,7 +9,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import FaqListItem from "@/components/ui/faq-list-item";
-import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 

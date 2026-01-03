@@ -20,7 +20,7 @@ const translations = {
     
     // Hero Section
     'hero.greeting': 'Cześć, jesteśmy',
-    'hero.title': 'KFreelance',
+    'hero.title': 'KM-Designs',
     'hero.subtitle': 'Agencja Cyfrowa',
     'hero.description': 'Tworzymy nowoczesne strony internetowe, aplikacje webowe i automatyzujemy procesy biznesowe dla Twojej firmy.',
     'hero.cta.primary': 'Bezpłatna konsultacja',
@@ -28,7 +28,7 @@ const translations = {
     
     // About Section
     'about.badge': 'O nas',
-    'about.title': 'Dlaczego warto wybrać KFreelance?',
+    'about.title': 'Dlaczego warto wybrać KM-Designs?',
     'about.description': 'Jesteśmy zespołem specjalistów z wieloletnim doświadczeniem w tworzeniu rozwiązań cyfrowych. Pomagamy firmom rozwijać się w internecie poprzez profesjonalne strony internetowe, funkcjonalne aplikacje webowe i inteligentne automatyzacje procesów biznesowych.',
     
     // Services Section
@@ -43,7 +43,7 @@ const translations = {
     'services.automation.description': 'Automatyzacja procesów biznesowych i integracje systemów',
     
     // Company Info
-    'company.name': 'KFreelance',
+    'company.name': 'KM-Designs',
     'company.type': 'Agencja Cyfrowa',
     'company.badge': 'Profesjonalne rozwiązania',
     
@@ -239,7 +239,7 @@ const translations = {
     
     // Hero Section
     'hero.greeting': 'Hello, we are',
-    'hero.title': 'KFreelance',
+    'hero.title': 'KM-Designs',
     'hero.subtitle': 'Digital Agency',
     'hero.description': 'We create modern websites, web applications and automate business processes for your company.',
     'hero.cta.primary': 'Free Consultation',
@@ -247,7 +247,7 @@ const translations = {
     
     // About Section
     'about.badge': 'About us',
-    'about.title': 'Why choose KFreelance?',
+    'about.title': 'Why choose KM-Designs?',
     'about.description': 'We are a team of specialists with years of experience in creating digital solutions. We help companies grow online through professional websites, functional web applications and intelligent business process automation.',
     
     // Services Section
@@ -262,7 +262,7 @@ const translations = {
     'services.automation.description': 'Business process automation and system integrations',
     
     // Company Info
-    'company.name': 'KFreelance',
+    'company.name': 'KM-Designs',
     'company.type': 'Digital Agency',
     'company.badge': 'Professional solutions',
     

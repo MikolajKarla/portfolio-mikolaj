@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://km-designs.pl'),
-  title: 'Strony Internetowe | KFreelance',
+  title: 'Strony Internetowe | KM-Designs',
   description: 'Nowoczesne strony internetowe, sklepy i aplikacje webowe — proces, realizacje i efekty.',
   alternates: {
     canonical: '/websites',
   },
   openGraph: {
-    title: 'Strony Internetowe | KFreelance',
+    title: 'Strony Internetowe | KM-Designs',
     description: 'Nowoczesne strony internetowe, sklepy i aplikacje webowe — proces, realizacje i efekty.',
     type: 'website',
     url: '/websites',
@@ -17,13 +17,13 @@ export const metadata: Metadata = {
         url: '/KM-logo.png',
         width: 1200,
         height: 630,
-        alt: 'KFreelance',
+        alt: 'KM-Designs',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Strony Internetowe | KFreelance',
+    title: 'Strony Internetowe | KM-Designs',
     description: 'Nowoczesne strony internetowe, sklepy i aplikacje webowe — proces, realizacje i efekty.',
     images: ['/KM-logo.png'],
   },

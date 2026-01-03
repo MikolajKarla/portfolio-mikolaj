@@ -79,8 +79,8 @@ function ContactForm({ className }: ContactFormProps) {
               </div>
               <div className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-[var(--color-accent)]" />
-                <a href="mailto:Contact@KarlaFreelancing.pl" className="transition hover:text-white">
-                  Contact@KarlaFreelancing.pl
+                <a href="mailto:contact@km-designs.pl" className="transition hover:text-white">
+                  contact@km-designs.pl
                 </a>
               </div>
               <p className="text-xs text-white/50">

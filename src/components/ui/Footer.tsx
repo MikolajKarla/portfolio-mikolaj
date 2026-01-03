@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { useLanguage } from '@/contexts/LanguageContext'
 
 function Footer() {
-  const email = 'Contact@KarlaFreelancing.pl'
+  const email = 'Contact@km-designs.pl'
   const { t } = useLanguage()
 
   return (

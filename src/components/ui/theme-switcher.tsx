@@ -6,13 +6,13 @@ import { Moon, Sun } from 'lucide-react'
 import { useTheme } from '@/contexts/ThemeContext'
 
 interface ThemeSwitcherProps {
-  variant?: 'default' | 'ghost' | 'outline'
+  variant?: 'light' | 'dark'
   size?: 'sm' | 'default' | 'lg'
   className?: string
 }
 
 export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({ 
-  variant = 'ghost', 
+  variant = 'light', 
   size = 'sm',
   className = ''
 }) => {
@@ -20,7 +20,7 @@ export const ThemeSwitcher: React.FC<ThemeSwitcherProps> = ({
 
   return (
     <Button
-      variant={"light"}
+      variant={variant}
       size={size}
       onClick={toggleTheme}
       className={`transition-all duration-200 ${className}`}
