@@ -117,6 +117,7 @@ export default function Page() {
           end: "bottom bottom-=100%",
           scrub: 1,
           pin: true,
+          invalidateOnRefresh:true
         }
       });
 
@@ -147,7 +148,7 @@ export default function Page() {
 
   return (
     <div className='relative'>
-      <div className="min-h-screen flex flex-col justify-center items-center gap-8 px-6 text-center sm:gap-10 sm:px-12 lg:gap-12 lg:px-0 scroll">
+      <div className="min-h-screen  flex flex-col justify-center items-center gap-8 px-6 text-center sm:gap-10 sm:px-12 lg:gap-12 lg:px-0 scroll">
         <div className='flex flex-col pt-12 sm:pt-16'>
           <h1 className='text-3xl font-black space-mono sm:text-4xl lg:text-5xl'>{t('websites.hero.heading1')}</h1>
           <h1 ref={offerRef} className='text-3xl font-bold space-mono text-shadow-xl bg-gradient-to-t from-[#B98F5F] from-10% to-[#FEDFBD] to-60%  bg-clip-text text-transparent py-5 sm:py-6 sm:text-4xl lg:text-5xl'>{offer[offerCounter]}</h1>
@@ -156,11 +157,12 @@ export default function Page() {
         <span className='w-full max-w-3xl px-0 h3 text-center sm:px-8'>{t('websites.hero.description')}</span>
       </div>
 
-      <div className="min-h-screen w-full flex flex-col items-stretch justify-center gap-6 px-6 py-12 bg-gradient-to-t from-[#3E3E3E] to-[#000000] sm:px-10 lg:flex-row lg:items-center lg:px-14 lg:py-0">
-        <div className="box rounded-4xl py-6 px-2">
+      <section className='w-full min-h-[50vh] flex justify-center px-6 py-16  bg-gradient-to-t  from-[#3E3E3E] to-[#000000]'>
+       <div className="lg:w-[1920px] flex flex-col items-stretch justify-center gap-6  sm:px-10 lg:flex-row lg:items-center ">
+        <div className="box rounded-4xl py-6 px-2" >
           <h1 className='text-2xl space-mono pt-4 pb-6 text-white sm:text-3xl sm:pb-8'>{t('websites.process.step1.title')}</h1>
           <span className='text-white px-4 text-base sm:text-lg'>{t('websites.process.step1.description')}</span>
-        </div>
+        </div>  
         <div className="box rounded-4xl py-6  px-2">
           <h1 className='text-2xl  space-mono pt-4 pb-6 text-white sm:text-3xl sm:pb-8'>{t('websites.process.step2.title')}</h1>
           <span className='text-white px-4 text-base sm:text-lg'>{t('websites.process.step2.description')}</span>
@@ -174,13 +176,14 @@ export default function Page() {
           <span className='text-white px-4 text-base sm:text-lg'>{t('websites.process.step4.description')}</span>
         </div>
       </div>
+      </section>
 
-      <div className="cases px-6 py-12 min-h-screen sm:px-12 lg:px-30 lg:py-0 lg:h-[100vh]">
+      <div className="cases reduced-width px-6 py-12  sm:px-12 lg:px-30 lg:py-0 lg:h-[100vh]">
         <div className="case flex flex-col gap-10 lg:flex-row-reverse lg:gap-0">
-          <div className="case-content w-full lg:w-1/2">
+          <div className="case-content reduced-width w-full ">
             <Image
               className="mx-auto w-full h-auto max-w-xl lg:max-w-none"
-              src="/RezydencjaMockup.png"
+              src="/RezydencjaMockup.jpg"
               alt={t('websites.caseOne.imageAlt')}
               width={1400}
               height={900}
@@ -188,7 +191,7 @@ export default function Page() {
             />
           </div>
 
-          <div className="case-content w-full flex items-center justify-center flex-col px-0 sm:px-6 lg:w-1/2 lg:px-12">
+          <div className="case-content w-full flex items-center justify-center flex-col px-0 sm:px-6  lg:px-12">
             <h2 className='text-3xl font-bold space-mono mb-4 sm:text-4xl'>{t('websites.case.title')}</h2>
             <div>
               <ul className='list-disc list-inside text-lg flex flex-col gap-2'>
@@ -224,15 +227,15 @@ export default function Page() {
       </div>
 
       <div className="spacer hidden lg:block">
-        <div className='h-1/2 border px-30'></div>
+        <div className='h-1/2 w-max-[1920px] border px-30'></div>
       </div>
     
-      <div className="cases2 px-6 py-12 min-h-screen sm:px-12 lg:px-30 lg:py-0 lg:h-[100vh]">
+      <div className="cases2 reduced-width px-6 py-12 min-h-screen sm:px-12 lg:px-30 lg:py-0 lg:h-[100vh]">
         <div className="case flex flex-col gap-10 lg:flex-row lg:gap-0">
           <div className="case-content w-full lg:w-1/2">
             <Image
               className="mx-auto w-full h-auto max-w-xl lg:max-w-none"
-              src="/AgataMockup.png"
+              src="/AgataMockup.jpg"
               alt={t('websites.caseTwo.imageAlt')}
               width={1400}
               height={900}

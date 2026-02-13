@@ -18,8 +18,8 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"], var
 export const metadata: Metadata = {
   metadataBase: new URL("https://km-designs.pl"),
   title: {
-    default: "KM-Designs - Agencja Cyfrowa",
-    template: "%s | KM-Designs",
+    default: "KM Designs - Agencja Cyfrowa",
+    template: "%s",
   },
   description:
     "Profesjonalna agencja cyfrowa specjalizująca się w tworzeniu stron internetowych, aplikacji webowych i automatyzacji procesów biznesowych.",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     "agencja cyfrowa",
     "seo",
   ],
-  authors: [{ name: "KM-Designs", url: "https://km-designs.pl" }],
+  authors: [{ name: "KM Designs", url: "https://km-designs.pl" }],
   alternates: {
     canonical: "/",
   },
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: "KM-Designs - Agencja Cyfrowa",
     description:
       "Profesjonalna agencja cyfrowa specjalizująca się w tworzeniu stron internetowych, aplikacji webowych i automatyzacji procesów biznesowych.",
-    siteName: "KM-Designs",
+    siteName: "KM Designs",
     images: [
       {
         url: "/KM-logo.png",
@@ -51,13 +51,6 @@ export const metadata: Metadata = {
         alt: "KM-Designs logo",
       },
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "KM-Designs - Agencja Cyfrowa",
-    description:
-      "Profesjonalna agencja cyfrowa specjalizująca się w tworzeniu stron internetowych, aplikacji webowych i automatyzacji procesów biznesowych.",
-    images: ["/KM-logo.png"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -68,7 +61,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  width: "device-width",
+  width: 100,
   initialScale: 1,
   themeColor: "#000000",
 };
@@ -92,14 +85,14 @@ export default function RootLayout({
                 {
                   "@type": "WebSite",
                   "url": "https://km-designs.pl",
-                  "name": "KM-Designs",
+                  "name": "KM Designs",
                   "description":
                     "Profesjonalna agencja cyfrowa specjalizująca się w tworzeniu stron internetowych, aplikacji webowych i automatyzacji procesów biznesowych.",
                 },
                 {
                   "@type": "Organization",
                   "url": "https://km-designs.pl",
-                  "name": "KM-Designs",
+                  "name": "KM Designs",
                   "logo": "https://km-designs.pl/KM-logo.png",
                   "contactPoint": [
                     {
@@ -131,17 +124,17 @@ export default function RootLayout({
           <ThemeProvider>
             <SmoothScroll />
 
-            <header className="fixed left-1/2 top-2 min-w-full -translate-x-1/2 z-50 flex justify-center px-2 sm:px-4 xs:px-0">
+            <header className="fixed left-1/2 top-2 w-full  -translate-x-1/2 z-50 flex justify-center px-2 sm:px-4 xs:px-0">
               <Header />
             </header>
 
-            <main className="mx-auto w-full ">
+            <main className="mx-auto w-full min-h-screen">
               {children}
               <div className="fixed bottom-6 right-6 z-50">
                 <LanguageSwitcher />
               </div>
             </main>
-            <footer className="bg-[var(--color-secondary)] text-white ">
+            <footer className="bg-[var(--color-secondary)] text-white mx-auto w-full ">
               <Footer />
             </footer>
           </ThemeProvider>

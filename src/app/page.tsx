@@ -42,7 +42,7 @@ export default function Home() {
       image: "/Section3MainPage.svg",
       alt: t("home.sections.seo.imageAlt"),
       wrapperClass: "lg:gap-24 lg:px-28",
-      imageClass: "lg:max-w-[900px]",
+      imageClass: "lg:max-w-[600px]",
     },
     {
       key: "support",
@@ -75,6 +75,8 @@ export default function Home() {
         if (totalSections <= 1) {
           return undefined;
         }
+        console.log(window.innerWidth)
+        const scroll = window.innerWidth>1920?1920:window.innerWidth
 
         return gsap.to(sections, {
           xPercent: -100 * (totalSections - 1),
@@ -82,7 +84,7 @@ export default function Home() {
           scrollTrigger: {
             trigger: containerEl,
             start: "top top",
-            end: () => `+=${window.innerWidth*totalSections}`,
+            end: () => `+=${scroll*totalSections}`,
             scrub: 0.5,
             pin: true,
             pinSpacing:true,
@@ -96,7 +98,7 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center gap-16 overflow-x-hidden md:gap-20 lg:w-full lg:px-0">
-      <section className="flex w-full max-w-5/6  h-2/3 flex-col-reverse items-center justify-between gap-12  py-16 sm:py-24 lg:flex-row lg:gap-16 lg:py-32">
+      <section className="flex  w-5/6 max-w-[1920px]  h-2/3 flex-col-reverse items-center justify-between gap-12  py-16 sm:py-24 lg:flex-row lg:gap-16 lg:py-32">
         <div className="left w-full text-center font-light lg:w-2/3 lg:text-left">
           <h1 className="text-3xl font-medium space-mono sm:text-4xl lg:text-5xl ">
             {t("home.hero.title")}
@@ -125,7 +127,7 @@ export default function Home() {
         </div>
         <div className="right flex w-full justify-center lg:w-1/2">
           <Image
-            src="/HeroPhoto.png"
+            src="/HeroPhoto.jpg"
             alt={t("home.hero.imageAlt")}
             className="h-auto w-full max-w-xs sm:max-w-sm lg:max-w-[660px]"
             width={660}
@@ -138,15 +140,15 @@ export default function Home() {
         </div>
       </section>
         <h2 className="px-2 text-center text-2xl h1 lg:text-5xl sm:text-3xl">{t("home.whatWeDo.heading")}</h2>  
-      <div className="w-full overflow-hidden">
+      <div className="w-full mx-auto flex justify-center">
       <section
         ref={containerRef}
-        className="horizontal relative flex flex-row   overflow-hidden py-12 sm:py-16 lg:items-center h-screen lg:flex-row lg:gap-0 lg:py-0"
+        className="horizontal relative flex flex-row w-screen  lg:w-max-[1920px] lg:w-screen py-12 sm:py-16 lg:items-center h-screen lg:flex-row lg:gap-0 lg:py-0"
       >
           {services.map((service) => (
             <div
               key={service.key}
-              className={`entry flex w-full flex-shrink-0 flex-col items-top justify-center gap-10 px-6 text-center lg:w-screen lg:flex-row lg:items-center lg:text-left ${service.wrapperClass}`}
+              className={`entry flex w-full flex-shrink-0 flex-col-reverse items-top justify-center gap-10 px-6 text-center  lg:w-max-[1920px] lg:w-screen lg:flex-row lg:items-center lg:text-left ${service.wrapperClass}`}
             >
               <div className="meta w-full space-y-14 text-center lg:w-1/2">
                 <h2 className="text-3xl grotesk sm:text-4xl lg:text-5xl">
@@ -173,7 +175,7 @@ export default function Home() {
       </div>
       
 
-      <section className="w-full h-[60vh] md:h-[70vh] lg:h-[100vh]  bg-img-logo flex justify-center items-center">
+      <section className="w-full  h-[60vh] md:h-[70vh] bg-img-logo flex justify-center items-center">
         <div className="w-3/4 p-6 items-center gap-6 text-center border-3 border-stone-600 flex flex-col xl:1/3 lg:w-1/3 md:w-2/3 rounded-3xl light-gradient-bg ">
         <h3 className="text-2xl grotesk">{t("home.cta.heading")}</h3>
         <span className="px-10">{t("home.cta.body")}</span>
@@ -181,7 +183,7 @@ export default function Home() {
           <Button 
               size="lg"
               variant="dark"
-              className="bg-primarytext-primary-foreground hover:bg-primary/90 text-white"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 text-white"
               
             >
               {t("home.cta.button")}
@@ -191,12 +193,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="faq text-center  text-white py-20 text-xl bg-[var(--color-secondary)] min-w-full">
-        <span className="font-semibold uppercase tracking-[0.3em] text-[var(--color-primary)]">
+      <section className="faq text-center  text-white py-20 text-xl bg-[var(--color-secondary)] w-full">
+        <span className="font-semibold  uppercase tracking-[0.3em] text-[var(--color-primary)]">
           {t("home.faq.badge")}
         </span>
         <h3 className="text-2xl">{t("home.faq.heading")}</h3>
-        <div className="flex md:px-8 lg:px-16 px-4 gap-20 flex-col md:flex-row   py-25 ">
+        <div className="flex md:px-8 lg:px-16 px-4 gap-20 flex-col md:flex-row w-screen reduced-width py-25 ">
           <div className="left w-full md:w-1/2  flex text-center md:text-left flex-col gap-6">
           <p className="">{t("home.faq.body")}</p>
           <p className="font-black ">{t("home.faq.body2")}</p>

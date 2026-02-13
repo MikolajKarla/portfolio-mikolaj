@@ -76,7 +76,12 @@ body {
   font-family: "Space Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-
+/* max width to elements - RWD */
+.reduced-width{
+max-width: 1920px;
+margin-left: auto;
+margin-right: auto;
+}
 #main-header {
   position: fixed; /* Kluczowe: utrzyma nagłówek na górze widoku */
   top: 0;
@@ -89,8 +94,9 @@ body {
 }
 .box{
   width: 100%;
-  height: 60vh;
+  height:100%;
   text-align: center;
+  padding: 20px 15px 20px 15px;
   box-shadow: 5 5 40px rgba(0, 0, 0, 0.5);
   background-image: linear-gradient(
     -20deg,
@@ -109,9 +115,6 @@ body {
 /* Klasa, która faktycznie ukrywa nagłówek przesuwając go w górę poza ekran */
 .header-hidden {
   top: -60px; /* Przesuń poza widok o jego własną wysokość */
-}
-.squircle{
-  corner-shape:squircle
 }
 .bg-img-logo{
   background-image: url('/KM-logo-opacity.svg');

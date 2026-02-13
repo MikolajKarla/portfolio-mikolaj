@@ -15,8 +15,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: '/KM-logo.png',
-        width: 1200,
-        height: 630,
+        width: 600,
+        height: 600,
         alt: 'KM-Designs',
       },
     ],

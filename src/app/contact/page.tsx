@@ -57,14 +57,14 @@ const faqs = [
 export default function Contact() {
   const { t } = useLanguage()
   return (
-    <div className="relative min-h-screen pt-12 w-full overflow-hidden text-white bg-radial ">
+    <div className="relative min-h-screen pt-12 w-full reduced-width overflow-hidden text-white bg-radial ">
       <div className="relative mx-auto w-full max-w-8xl px-5 py-12 sm:px-6 lg:px-10 lg:py-20">
         <div className="grid w-full gap-4 sm:grid-cols-2 xl:grid-cols-4">
           <ContactForm className="w-full sm:col-span-2 p-3 xl:col-span-3" />
 
           
 
-          <Card className="relative flex h-full w-full flex-col overflow-hidden border lg:rounded-tr-4xl border-white/10 bg-[var(--color-secondary)] text-white shadow-2xl sm:col-span-1 xl:col-span-1">
+          <Card className="relative flex h-full w-full  flex-col overflow-hidden border lg:rounded-tr-4xl border-white/10 bg-[var(--color-secondary)] text-white shadow-2xl sm:col-span-1 xl:col-span-1">
             <div className="pointer-events-none absolute inset-0  opacity-45" />
             <div className="relative h-full">
               <CardHeader>

@@ -8,7 +8,7 @@ function Footer() {
   const { t } = useLanguage()
 
   return (
-    <footer className="bg-[var(--color-secondary)] border-t-neutral-600 border-t-1 text-white">
+    <footer className="bg-[var(--color-secondary)] border-t-neutral-600 border-t-1 w-max-[1920px] text-white">
       <div className="mx-auto flex w-full flex-wrap gap-6 max-w-screen-2xl flex-col px-5 py-12 md:flex-row md:items-start md:justify-between lg:px-10">
         <div className="flex flex-1  flex-col gap-12 sm:max-w-md">
           <div className='flex flex-col gap-3'>

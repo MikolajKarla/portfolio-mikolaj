@@ -187,7 +187,7 @@ const translations = {
     'home.faq.item-2.answer': 'Standardowy projekt wizytówki to około 2-3 tygodnie. Rozbudowane serwisy i sklepy zajmują zazwyczaj od 4 do 8 tygodni. Dokładny harmonogram otrzymasz zawsze wraz z umową.',
     'home.faq.item-3.answer': 'Tak. Tworzymy strony w oparciu o intuicyjne systemy (CMS), które pozwalają na łatwą edycję tekstów i zdjęć bez wiedzy programistycznej. Po wdrożeniu przeprowadzimy dla Ciebie krótkie szkolenie.',
     'home.faq.item-4.answer': 'Nie zostawiamy Cię samego. Oferujemy miesięczne pakiety opieki technicznej lub doraźną pomoc w razie awarii. Na wykonaną stronę udzielamy również gwarancji technicznej.',
-    'home.faq.item-5.answer': 'Jak najbardziej. Pracujemy etapami, abyś miał pełną kontrolę nad procesem. Najpierw przygotowujemy projekt graficzny (makietę), który omawiamy i dopieszczamy. Dopiero po Twojej pełnej akceptacji wizualnej przystępujemy do programowania. Dzięki temu masz pewność, że finalna strona będzie wyglądać dokładnie tak, jak tego oczekujesz.',
+    'home.faq.item-5.answer': 'Pracujemy etapami, abyś miał pełną kontrolę nad procesem. Najpierw przygotowujemy projekt graficzny (makietę), który omawiamy i dopieszczamy. Dopiero po Twojej pełnej akceptacji wizualnej przystępujemy do programowania. Dzięki temu masz pewność, że finalna strona będzie wyglądać dokładnie tak, jak tego oczekujesz.',
 
 
     // Contact Page
@@ -406,7 +406,7 @@ const translations = {
     'home.faq.item-2.answer': 'A standard business site takes about 2–3 weeks. Larger portals and stores usually take 4–8 weeks. You always receive a detailed schedule with the contract.',
     'home.faq.item-3.answer': 'Yes. We build sites on intuitive CMS systems that allow you to edit text and images without any coding skills. After launch, we provide a short training session.',
     'home.faq.item-4.answer': 'We don’t leave you on your own. We offer monthly technical care packages or ad‑hoc help if anything breaks. We also provide a technical warranty for the delivered site.',
-    'home.faq.item-5.answer': 'Absolutely. We work in stages so you have full control. First we prepare a visual design (mockup), then review and refine it together. Only after you fully approve the visuals do we start development, ensuring the final site matches your expectations.',
+    'home.faq.item-5.answer': 'We work in stages so you have full control. First we prepare a visual design (mockup), then review and refine it together. Only after you fully approve the visuals do we start development, ensuring the final site matches your expectations.',
 
     // Contact Page
     'contact.process.badge': 'Process',

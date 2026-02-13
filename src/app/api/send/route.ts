@@ -152,7 +152,7 @@ export async function POST(request: Request) {
     const { data, error: resendError } = await resend.emails.send({
       from: verifiedSender,
       to: "contact@km-designs.pl",
-      replyTo,
+      replyTo: replyTo,
       subject: `Zapytanie ze strony - ${name || "Nieznany"}`,
       html: emailHtml,
     })
