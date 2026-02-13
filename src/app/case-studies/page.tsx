@@ -4,13 +4,13 @@ import { Button } from "@/components/ui/button";
 const caseStudies = [
 	{
 		client: "Sleep Like A Baby",
-		title: "Sklep e-commerce zwiększył sprzedaż o 40% w pierwszym kwartale współpracy",
+		title: "Wzrost sprzedaży platformy e-commerce",
 		summary:
 			"Sklep potrzebował popraw bramki płatniczej, nowych grafik produktowych, konfiguracja zakupów kursu oraz zooptymalizowania strony pod względem wydajności",
 		highlights: [
-			"Diagnoza błędu płatności i jego rozwiązanie",
-			"Znaczne zmniejszenie ilości wtyczek na stronie",
-			"Poprawa UX i UI ",
+			"Naprawa błędów w bramce płatniczej, co bezpośrednio przełożyło się na automatyzację zakupów",
+			"Usunięcie zbędnych wtyczek i optymalizacja szybkości ładowania strony.",
+			"Nowe grafiki produktowe oraz poprawa UX/UI, aby ułatwić rodzicom nawigację.",
 		],
 		image: "/sleeplikeababy.jpg",
 		link: "https://sleeplikeababy.eu/",
@@ -18,67 +18,45 @@ const caseStudies = [
 	},
 	{
 		client: "Rezydencja Gościnna",
-		title: "Platforma kursowa gotowa w 10 tygodni",
+		title: "Nowoczesny design, który realnie zwiększył liczbę rezerwacji",
 		summary:
-			"Zbudowaliśmy kompletną platformę e-learningową z obsługą płatności subskrypcyjnych, modułem gamifikacji oraz panelem raportowym.",
+			"Pełny redesign strony zorientowany na potrzeby rodzin z dziećmi, przekładający się na wyższą konwersję zapytań o pobyt.",
 		highlights: [
-			"Automatyzacja dodawania nowych kursów w oparciu o moduł CMS",
-			"Integracja z narzędziami webinarowymi przez webhooki",
-			"System certyfikatów i śledzenia postępów użytkowników",
+			"Wykorzystanie nowoczesnych technologii do maksymalnego przyspieszenia witryny",
+            "Ponad 2 lata stałej opieki technicznej i rozwoju strony",
+            "Skuteczna analityka i optymalizacja pod kątem wyszukiwarek (SEO)"
 		],
 		image: "/rezydencjagoscinna.jpg",
 		link: "https://rezydencjagoscinna.pl/"
 	},
 	{
 		client: "Agata Przemęcka",
-		title: "Aplikacja inwestycyjna B2B dla klientów premium",
+		title: "Platforma e-learningowa i ekosystem sprzedaży wiedzy",
 		summary:
-			"Stworzyliśmy bezpieczną platformę do zarządzania portfelem z raportami w czasie rzeczywistym oraz integracją z zewnętrznymi API banków.",
+			"Budowa profesjonalnej platformy edukacyjnej i sklepu, pozwalająca na skuteczną monetyzację wiedzy z zakresu marketingu.",
 		highlights: [
-			"Zgodność z RODO, PSD2 i podziałem uprawnień",
-			"Dashboard analityczny z danymi w czasie rzeczywistym",
-			"Automatyczne raporty PDF dla doradców i zarządu",
+			"Wdrożenie zaawansowanego systemu e-learningowego na bazie LearnDash",
+            "Realizacja unikalnego designu w ekosystemie WordPress",
+            "Pełna integracja funkcjonalnego sklepu internetowego"
 		],
 		image: "/agata-przemecka.jpg",
 		link: "https://agataprzemecka.pl/"
 	},
 	{
 		client: "Balonowy świat",
-		title: "Aplikacja inwestycyjna B2B dla klientów premium",
+		title: "Ratunek dla sprzedaży online - optymalizacja czasu ładowania",
 		summary:
-			"Stworzyliśmy bezpieczną platformę do zarządzania portfelem z raportami w czasie rzeczywistym oraz integracją z zewnętrznymi API banków.",
+			"Strona ładowała się 8+ sekund co odstraszało kupujących usługi online",
 		highlights: [
-			"Zgodność z RODO, PSD2 i podziałem uprawnień",
-			"Dashboard analityczny z danymi w czasie rzeczywistym",
-			"Automatyczne raporty PDF dla doradców i zarządu",
+			"Radykalna poprawa wydajności i skrócenie czasu odpowiedzi serwera",
+            "Profesjonalna lokalizacja treści i korekta błędów językowych",
+            "Optymalizacja struktury podstron oraz treści pod kątem użyteczności"
 		],
 		image: "/balonowy-swiat.jpg",
 		link: "https://balonowyswiat.biz/"
 	}
 ];
 
-const processSteps = [
-	{
-		title: "Discovery & strategia",
-		description:
-			"Analizujemy cele biznesowe, definiujemy metryki sukcesu i projektujemy roadmapę produktu, by od początku dowozić wartość.",
-	},
-	{
-		title: "Warsztaty produktowe",
-		description:
-			"Wspólnie z zespołem klienta dopracowujemy doświadczenie użytkownika, makiety i architekturę informacji.",
-	},
-	{
-		title: "Iteracyjne wdrażanie",
-		description:
-			"Budujemy w sprintach, pokazujemy kolejne releasy na środowisku testowym i reagujemy na feedback w locie.",
-	},
-	{
-		title: "Optymalizacja i wzrost",
-		description:
-			"Monitorujemy wyniki, prowadzimy eksperymenty A/B i rozwijamy produkt w oparciu o dane oraz insighty z rynku.",
-	},
-];
 
 export default function CaseStudiesPage() {
 
